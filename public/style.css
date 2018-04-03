@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,400i');
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #FAFAFA;
+  font-family: 'Nunito', sans-serif;
+}
+
+main {
+  flex: 1;
+  margin-top: 5.5em;
+}
+
+.footer {
+  background: white;
+}
+
+.btn.btn-sm {
+  background: white;
+  border: 1px solid #CED4DA;
+}
+
+.fa-search {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+  font-size: 1.1em;
+}
+
+.active .nav-link {
+  color: #039BE5 !important;
+}
+
+li:not(.active) .nav-link:hover {
+  color: #039BE5 !important;
+}
+
+.dropdown-item:active {
+  background: #039BE5;
+}
+
+.card {
+  min-height: 25em;
+}
+
+.book-in {
+  margin-top: 0.3em;
+  width: 5.5em;
+}
+
+.fa-edit span {
+  margin-left: 0.1em;
+}
+
+.fa-edit:hover {
+  color: #039BE5 !important;
+}
+
+.info span {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  line-height: 1.3em;
+  font-family: 'Nunito', sans-serif;
+}
+
+.card-header a:hover {
+  text-decoration: none;
+  color: #039BE5 !important;
+}
+
+.title {
+  color: #0091EA;
+  font-size: 2em;
+}
+
+.fa-calendar-alt span {
+  margin-left: 0.3em;
+}
+
+.fa-map-marker-alt span {
+  margin-left: 0.4em;
+}
+
+.fa-dollar-sign {
+  margin-left: 0.1em;
+}
+
+.fa-dollar-sign span {
+  margin-left: 0.5em;
+}
+
+.card-text {
+  font-size: 1.1em;
+}
+
+.input-group {
+  width: 15em !important;
+}
+
+.dropdown-menu {
+  width: 10em;
+}
+
+.create-page {
+  font-size: 1.1em;
+}
+
+#date {
+  background: white;
+}
+
+.picker__frame {
+  position: static !important;
+  margin-top: 7em !important;
+}
+
+.form-text {
+  margin-left: 0.17em;
+}
+
+#full-desc {
+  height: 15em;
+  background: white;
+  border: 1px solid #ced4da;
+  width: 100%;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.picker__input.picker__input--active,
+.quill-active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff !important;
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.ql-toolbar {
+  display: none;
+}
+
+.ql-container {
+  border-radius: 0.25rem;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .home {
+    margin-left: -0.42em;
+  }
+}

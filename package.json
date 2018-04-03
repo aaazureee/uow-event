@@ -1,0 +1,45 @@
+{
+  "name": "uow-event",
+  "version": "1.0.0",
+  "description": "UOW event booking system",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "babel-watch app.js"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaazureee/uow-event.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "restful"
+  ],
+  "author": "HCC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaazureee/uow-event/issues"
+  },
+  "homepage": "https://github.com/aaazureee/uow-event#readme",
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.12"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "babel-watch": "^2.0.7",
+    "mocha": "^5.0.5"
+  }
+}
