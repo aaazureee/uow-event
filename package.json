@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "start": "babel-watch app.js"
+    "start": "babel-watch app.js",
+    "test": "mocha --exit --require babel-register --timeout 5000"
   },
   "babel": {
     "presets": [
