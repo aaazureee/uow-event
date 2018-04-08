@@ -31,9 +31,11 @@
   },
   "homepage": "https://github.com/aaazureee/uow-event#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "babel-polyfill": "^6.26.0",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
+    "moment": "^2.22.0",
     "mongoose": "^5.0.12"
   },
   "devDependencies": {

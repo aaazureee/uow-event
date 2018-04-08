@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Event Booking System</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	 crossorigin="anonymous">
+	<!-- Custom styles for this template -->
+	<link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<header>
+		<!-- Fixed navbar -->
+		<nav class="p-3 navbar navbar-expand-md navbar-light fixed-top bg-white">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+				 aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav">
+						<li class="nav-item home active">
+							<a class="nav-link" href="./index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./create.html">Create event</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Booked events</a>
+						</li>
+					</ul>
+
+					<!-- Search bar -->
+					<form class="form-inline mr-auto ml-md-3">
+						<div class="input-group">
+							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search">
+							<div class="input-group-append">
+								<button class="btn btn-sm" type="submit">
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+
+					<!-- Username dropdown -->
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+							 aria-expanded="false">
+								Username
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">Sign Out</a>
+							</div>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- Begin page content -->
+	<main class="container">
+		<header class="title">Upcoming Events</header>
+		<!-- Display list of cards -->
+		<div class="row">
+		<% for (let event of events) { %>	
+		<div class="col-lg-6 my-3">
+				<div class="card">
+					<h5 class="card-header d-flex justify-content-between">
+						<a href="#" class="text-dark"><%= event.eventName %></a>
+						<a href="#">
+							<i class="far fa-edit text-muted">
+								<span class="small">Edit</span>
+							</i>
+						</a>
+					</h5>
+					<div class="card-body d-flex flex-column justify-content-between">
+						<p class="card-text"><%= event.summary %></p>
+						<div class="info">
+							<div class="mb-2">
+								<i class="far fa-calendar-alt">
+									<span class="font-italic"><%= event.durationString %></span>
+								</i> 	
+							</div>
+							<div class="mb-2">
+								<i class="fas fa-map-marker-alt">
+									<span class="font-italic"><%= event.address %></span>
+								</i>
+							</div>
+							<div class="mb-2">
+								<i class="fas fa-dollar-sign">
+									<span class="font-italic"><%= event.price %></span>
+								</i>
+							</div>
+							<a href="#" class="btn btn-primary book-in">Book In</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% } %>
+			</div>
+	</main>
+
+	<!-- Sticky Footer -->
+	<footer class="footer mt-5">
+		<div class="container py-2 text-center">
+			<div class="text-muted mt-1">UOW Event Booking System</div>
+			<div class="text-muted mb-1">Atom Industry © 2018</div>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
+</body>
+
+</html>

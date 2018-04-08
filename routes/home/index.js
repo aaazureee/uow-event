@@ -1,13 +1,25 @@
 import express from 'express';
 
 const router = express.Router();
+import moment from 'moment';
+
+import Event from '../../models/event';
+
 router.get('/', (req, res, next) => {
-    res.send('This is home');
-});
+    Event.find().then((result)=>{
+        let events = result.map((value)=>{
+            let event = value.toObject();
+            if (!event.price) {
+                event.price = "Free";
+            }
+            let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mmA');
+            let toDate = moment(event.endDate).format('hh:mmA');
+            event.durationString = `${fromDate} - ${toDate}`;
+            return event;
+        });
 
-router.get('/test', (req, res, next) => {
-    res.send('Testing');
+        res.render('index', {events: events});
+    });
 });
-
 
 export default router;
