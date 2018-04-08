@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import User from '../models/user';
 import assert from 'assert';
 
-describe('Save user to database', () => {
+describe('User saving test', () => {
   // sample user
   const username = 'aaazureee';
   const email = 'aaazureee@gmail.com';
@@ -70,6 +70,12 @@ describe('Save user to database', () => {
             done();
           });
         });
+    });
+  });
+
+  after(done => {
+    mongoose.connection.db.dropCollection('users', () => {
+      done();
     });
   });
 });

@@ -9,9 +9,3 @@ before(done => {
     .once('open', () => { console.log('Connected to mongoDB...'); done(); })
     .on('error', err => console.log(err));
 });
-
-after(done => {
-  mongoose.connection.db.dropCollection('users', () => {
-    done();
-  });
-});

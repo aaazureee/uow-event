@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import Event from '../models/event';
+import Counter from '../models/counter';
 import assert from 'assert';
 
-describe('Save event to database', () => {
+describe('Event saving test', () => {
   const eventName = 'Sample event 1';
   const summary = 'Sample summary 1';
   const address = 'UOW';
@@ -18,20 +19,35 @@ describe('Save event to database', () => {
   });
 
   it('Save an event to the database', done => {
-    const event1 = {
+    // sample event
+    const eventDetails = {
       eventName, summary, address, startDate, endDate, fullDesc, capacity
     };
-    const event2 = Object.assign({}, event1);
-    Event.create(event1)
-      .then(result => {
-        assert(!event1.isNew);
-        
-      })
-      .then(() => {
-        Event.create(event2).then(result => {
-          assert(!event2.isNew);
-          done();
+    const event1 = new Event(eventDetails);
+    const event2 = new Event(eventDetails);
+    let count = 0;
+    Counter.findById('entity').then(result => {
+      count = result.value; // current count;
+    }).then(() => {
+      event1.save()
+        .then(event => {
+          assert(!event1.isNew);
+          assert(event.eventId === count + 1);
+        })
+        .then(() => {
+          event2.save()
+            .then(event => {
+              assert(!event2.isNew);
+              assert(event.eventId === count + 2);
+              done();
+            });
         });
-      });
+    });
+  });
+
+  after(done => {
+    mongoose.connection.db.dropCollection('events', () => {
+      done();
+    });
   });
 });

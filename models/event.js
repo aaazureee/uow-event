@@ -39,7 +39,8 @@ const eventSchema = new Schema({
     default: 0
   },
   promoCode: String,
-  discount: Number
+  discount: Number,
+  price: Number
 });
 
 eventSchema.pre('save', function (next) {
