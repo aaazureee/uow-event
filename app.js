@@ -5,8 +5,6 @@ import bodyParser from 'body-parser';
 import homeRouter from './routes/home';
 import eventRouter from './routes/event';
 
-import homeRouter from './routes/home';
-
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -20,8 +18,6 @@ mongoose.connect(`mongodb://${dbuser}:${dbpassword}@ds115569.mlab.com:15569/even
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('open', () => console.log('Connection to database established'));
-
-
 
 app.use('/', homeRouter);
 app.use('/event', eventRouter);

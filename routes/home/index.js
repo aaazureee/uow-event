@@ -6,8 +6,8 @@ import moment from 'moment';
 import Event from '../../models/event';
 
 router.get('/', (req, res, next) => {
-    Event.find().then((result)=>{
-        let events = result.map((value)=>{
+    Event.find().then((result) => {
+        let events = result.map((value) => {
             let event = value.toObject();
             if (!event.price) {
                 event.price = "Free";
@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
             return event;
         });
 
-        res.render('index', {events: events});
+        res.render('index', { events: events });
     });
 });
 
