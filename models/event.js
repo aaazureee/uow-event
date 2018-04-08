@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
+import Counter from './counter';
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventId: {
-    type: Number,
-    required: true
+    type: Number
   },
   eventName: {
     type: String,
@@ -34,14 +34,36 @@ const eventSchema = new Schema({
     type: Number,
     required: true
   },
-  currentBookings: Number,
+  currentBookings: {
+    type: Number,
+    default: 0
+  },
   promoCode: String,
   discount: Number
 });
 
-const Event = mongoose.model('Event', eventSchema);
-
-Event.pre('save', () => {
-
+eventSchema.pre('save', function (next) {
+  var event = this;
+  Counter.count({}).then(count => {
+    if (count === 0) {
+      Counter.create({
+        _id: 'entity',
+        value: 1000
+      }).then(result => {
+        event.eventId = result.value;
+        next();
+      });
+    } else {
+      Counter.findOneAndUpdate(
+        { _id: 'entity' },
+        { $inc: { value: 1 } },
+        { new: true }).then(result => {
+          event.eventId = result.value;
+          next();
+        });
+    }
+  });
 });
+
+const Event = mongoose.model('Event', eventSchema);
 export default Event;

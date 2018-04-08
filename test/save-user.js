@@ -53,8 +53,8 @@ describe('Save user to database', () => {
   });
 
   it('Save 2 user with duplicate values (sequential) is not allowed', done => {
-    const user1 = new User({ username, email, password, eventsBooked });
-    const user2 = new User({ username, email, password, eventsBooked });
+    const user1 = { username, email, password, eventsBooked };
+    const user2 = { username, email, password, eventsBooked };
     user2.email = 'kappa123@gmail.com';
 
     User.ensureIndexes(() => {
