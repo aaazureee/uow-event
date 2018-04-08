@@ -141,17 +141,29 @@
 							Event description is required.
 						</div>
 					</div>
-
+		
 					<div class="form-row">
-						<div class="form-group col-lg-4">
+						<div class="form-group col-lg-5">
+							<label for="capacity">Price</label>
+							<input type="number" class="form-control" id="price" min="0" placeholder="Price">
+							<div class="invalid-feedback">
+								Please enter a valid number.
+							</div>
+							<small class="form-text text-muted">
+								Leave empty if free.
+							</small>
+						</div>
+						<div class="form-group col-lg-5">
 							<label for="capacity">Capacity</label>
 							<input type="number" class="form-control" id="capacity" min="0" placeholder="Number of seats" required>
 							<div class="invalid-feedback">
 								Please enter a valid number.
 							</div>
-						</div>
-
-						<div class="form-group col-lg-3">
+						</div>						
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group col-lg-5">
 							<label for="promo-code">Promotional Code</label>
 							<input type="text" class="form-control" id="promo-code" placeholder="Promo code">
 							<small class="form-text text-muted">
