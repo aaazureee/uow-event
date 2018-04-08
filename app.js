@@ -6,6 +6,7 @@ import eventRouter from './routes/event';
 
 const app = express();
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 const dbuser = 'test';
 const dbpassword = 'test';
