@@ -64,6 +64,7 @@ describe('User booking test', () => {
     const promises = [
       mongoose.connection.db.dropCollection('users'), mongoose.connection.db.dropCollection('events')
     ];
-    Promise.all(promises).then(() => done());
+    Promise.all(promises).then(() => done())
+      .catch(() => done());
   });
 });

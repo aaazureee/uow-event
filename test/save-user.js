@@ -10,9 +10,7 @@ describe('User saving test', () => {
   const eventsBooked = [1000];
 
   beforeEach(done => {
-    mongoose.connection.db.dropCollection('users', () => {
-      done();
-    });
+    mongoose.connection.db.dropCollection('users', () => done());
   });
 
   it('Save an user with all accepted attributes', done => {
@@ -74,8 +72,6 @@ describe('User saving test', () => {
   });
 
   after(done => {
-    mongoose.connection.db.dropCollection('users', () => {
-      done();
-    });
+    mongoose.connection.db.dropCollection('users', () => done());
   });
 });
