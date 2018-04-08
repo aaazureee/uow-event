@@ -18,7 +18,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  eventsBooked: [String]
+  eventsBooked: [Number]
 });
 
 const User = mongoose.model('User', userSchema);

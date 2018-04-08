@@ -9,23 +9,23 @@ const eventSchema = new Schema({
   eventName: {
     type: String,
     required: true
-  }, 
+  },
   summary: {
     type: String,
     required: true
-  }, 
+  },
   address: {
     type: String,
     required: true
-  }, 
+  },
   startDate: {
     type: Date,
     required: true
-  }, 
+  },
   endDate: {
     type: Date,
     required: true
-  }, 
+  },
   fullDesc: {
     type: String,
     required: true
@@ -33,11 +33,15 @@ const eventSchema = new Schema({
   capacity: {
     type: Number,
     required: true
-  }, 
-	currentBookings: Number
+  },
+  currentBookings: Number,
   promoCode: String,
   discount: Number
 });
 
 const Event = mongoose.model('Event', eventSchema);
+
+Event.pre('save', () => {
+
+});
 export default Event;
