@@ -4,13 +4,7 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventId: {
-<<<<<<< HEAD
-    type: Number,
-    unique: true,
-    required: true
-=======
     type: Number
->>>>>>> dev-database
   },
   eventName: {
     type: String,
