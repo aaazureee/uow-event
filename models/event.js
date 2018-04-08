@@ -34,6 +34,7 @@ const eventSchema = new Schema({
     type: Number,
     required: true
   }, 
+	currentBookings: Number
   promoCode: String,
   discount: Number
 });
