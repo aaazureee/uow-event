@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   eventId: {
     type: Number,
+    unique: true,
     required: true
   },
   eventName: {
@@ -34,6 +35,7 @@ const eventSchema = new Schema({
     type: Number,
     required: true
   }, 
+  currentBookings: Number,
   promoCode: String,
   discount: Number
 });
