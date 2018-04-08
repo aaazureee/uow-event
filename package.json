@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "start": "babel-watch app.js"
+    "start": "babel-watch app.js",
+    "test": "mocha"
   },
   "babel": {
     "presets": [
@@ -30,13 +31,13 @@
   },
   "homepage": "https://github.com/aaazureee/uow-event#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "mongoose": "^5.0.12"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
