@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 import Event from '../models/event';
-import Counter from '../models/counter';
 import assert from 'assert';
 
-describe('Event saving test', () => {
+describe('Event updating test', () => {
   const eventName = 'Sample event 1';
   const summary = 'Sample summary 1';
   const address = 'UOW';
@@ -16,29 +15,32 @@ describe('Event saving test', () => {
     mongoose.connection.db.dropCollection('events', () => done());
   });
 
-  it('Save an event to the database', done => {
-    // sample event
-    const eventDetails = {
+  it('Update a sample event', done => {
+    const event = new Event({
       eventName, summary, address, startDate, endDate, fullDesc, capacity
-    };
-    const event1 = new Event(eventDetails);
-    const event2 = new Event(eventDetails);
-    let count = 0;
-    Counter.findById('entity').then(result => {
-      count = result.value; // current count;
-    }).then(() => {
-      event1.save()
-        .then(event => {
-          assert(!event1.isNew);
-          assert(event.eventId === count + 1);
-        })
-        .then(() => {
-          event2.save()
-            .then(event => {
-              assert(!event2.isNew);
-              assert(event.eventId === count + 2);
-              done();
-            });
+    });
+    event.save().then(() => {
+      Event.findByIdAndUpdate(
+        event._id,
+        {
+          eventName: 'Updated name 1',
+          address: 'UTS',
+          endDate: new Date(2018, 11, 2),
+          price: 25,
+          promoCode: 'UOW50',
+          discount: 0.5
+        },
+        { new: true }
+      )
+        .then(updated => {
+          const { eventName, address, endDate, price, promoCode, discount } = updated;
+          assert(eventName === 'Updated name 1');
+          assert(address === 'UTS');
+          assert(endDate.getTime() === new Date(2018, 11, 2).getTime());
+          assert(price === 25);
+          assert(promoCode === 'UOW50');
+          assert(discount === 0.5);
+          done();
         });
     });
   });
@@ -46,5 +48,5 @@ describe('Event saving test', () => {
   after(done => {
     mongoose.connection.db.dropCollection('events', () => done());
   });
-  
+
 });

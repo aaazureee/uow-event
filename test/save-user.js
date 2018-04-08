@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import User from '../models/user';
 import assert from 'assert';
 
-describe('Save user to database', () => {
+describe('User saving test', () => {
   // sample user
   const username = 'aaazureee';
   const email = 'aaazureee@gmail.com';
@@ -10,9 +10,7 @@ describe('Save user to database', () => {
   const eventsBooked = [1000];
 
   beforeEach(done => {
-    mongoose.connection.db.dropCollection('users', () => {
-      done();
-    });
+    mongoose.connection.db.dropCollection('users', () => done());
   });
 
   it('Save an user with all accepted attributes', done => {
@@ -71,5 +69,9 @@ describe('Save user to database', () => {
           });
         });
     });
+  });
+
+  after(done => {
+    mongoose.connection.db.dropCollection('users', () => done());
   });
 });

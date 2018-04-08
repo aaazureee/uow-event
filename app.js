@@ -5,7 +5,10 @@ import bodyParser from 'body-parser';
 import homeRouter from './routes/home';
 import eventRouter from './routes/event';
 
+import homeRouter from './routes/home';
+
 const app = express();
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
