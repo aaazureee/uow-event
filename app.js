@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import homeRouter from './routes/home';
 import eventRouter from './routes/event';
+import createRouter from './routes/create';
 
 const app = express();
 
@@ -20,6 +21,13 @@ db.on('open', () => console.log('Connection to database established'));
 
 app.use('/', homeRouter);
 app.use('/event', eventRouter);
+app.use('/create', createRouter);
+
+//error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).render('error-500');
+});
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Listening at ' + listener.address().port);
