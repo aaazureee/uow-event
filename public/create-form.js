@@ -35,25 +35,32 @@ $(document).click(function (event) {
 });
 
 // Submit handler
-let form = $('.needs-validation').eq(0);
-form.submit(event => {
+let form = document.getElementsByClassName('needs-validation')[0];
+form.onsubmit = event => {
 	event.preventDefault();
+	let valid = true;
+	
 	//reset
 	$('#discount').prop('required', false);
 	$('#promo-code').prop('required', false);
 	// Promocode and discount percentage complementary handler
 	if ($('#promo-code').val().trim()) {
 		$('#discount').prop('required', true);
+		valid = false;
 	}
 	if ($('#discount').val().trim()) {
 		$('#promo-code').prop('required', true);
+		valid = false;
 	}
 
-	form.addClass('was-validated');
+	if (($('#promo-code').val().trim()) && ($('#discount').val().trim())) valid = true;
+
+	form.classList.add('was-validated');
 	// Textarea handler
 	if (quill.getLength() === 1) {
 		$('#quill-feedback').show();
 		$('.ql-container').css('border-color', '#dc3545');
+		valid = false;
 	} else {
 		$('#quill-feedback').hide();
 		$('.ql-container').css('border-color', '#28a745');
@@ -70,6 +77,7 @@ form.submit(event => {
 			$('#start-time').addClass('is-invalid');
 			$('#start-time').css('border-color', '#dc3545'); // red 
 			$('#end-time').css('border-color', '#dc3545');
+			valid = false;
 		} else {
 			$('#start-time').removeClass('is-invalid');
 			$('#start-time').css('border-color', '#28a745'); // green
@@ -77,26 +85,34 @@ form.submit(event => {
 		}
 	}
 
-	//submit request 
+	//submit request
+	if (!form.checkValidity()) valid = false; // html5 input check
+	if (valid === false) return false;
 	//convert date to milliseconds
-	let startDate = datePicker.get('select').pick + startPicker.get('select').pick * 60000;
-	let endDate = datePicker.get('select').pick + endPicker.get('select').pick * 60000;
+	let startDate = new Date(datePicker.get('select').obj.getTime());
+	startDate.setHours(startPicker.get('select').hour);
+	startDate.setMinutes(startPicker.get('select').mins);
+	let endDate = new Date(datePicker.get('select').obj.getTime());
+	endDate.setHours(endPicker.get('select').hour);
+	endDate.setMinutes(endPicker.get('select').mins);
 	let newEvent = {
 		eventName: $('#event-name').val().trim(),
 		summary: $('#overview').val().trim(),
 		address: $('#address').val().trim(),
-		startDate: startDate,
-		endDate: endDate,
-		fullDesc: quill.getText(),
+		startDate: startDate.toJSON(),
+		endDate: endDate.toJSON(),
+		fullDesc: quill.root.innerHTML,
 		capacity: $('#capacity').val(),
 		promoCode: $('#promo-code').val().trim(),
 		discount: $('#discount').val(),
+		price: $('#price').val(),
 	};
 
 	$.ajax({
 		type: 'POST',
 		url: '/create',
-		data: newEvent,
+		data: JSON.stringify(newEvent),
+		contentType: 'application/json',
 		success: (eventCreated) => {
 			//redirect user to event page
 			window.location.href = `/event/${eventCreated.id}`;
@@ -107,7 +123,7 @@ form.submit(event => {
 		
 	});
 	
-});
+};
 
 // check if start time < end time
 function checkTime(datePicker, startPicker, endPicker) {

@@ -13,12 +13,13 @@ router.post('/', (req, res, next) => {
     eventName: data.eventName,
     summary: data.summary,
     address: data.address,
-    startDate: new Date(Number(data.startDate)),
-    endDate: new Date(Number(data.endDate)),
+    startDate: new Date(data.startDate),
+    endDate: new Date(data.endDate),
     fullDesc: data.fullDesc,
     capacity: data.capacity,
     promoCode: data.promoCode,
     discount: data.discount,
+    price: data.price,
   }).then((event) => {
     res.status(201).json({id: event.eventId});
   }).catch((error) => {
