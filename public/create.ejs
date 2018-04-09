@@ -37,10 +37,10 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav">
 						<li class="nav-item home">
-							<a class="nav-link" href="./index.html">Home</a>
+							<a class="nav-link" href="./index.ejs">Home</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="./create.html">Create event</a>
+							<a class="nav-link" href="./create.ejs">Create event</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Booked events</a>
@@ -48,7 +48,7 @@
 					</ul>
 
 					<!-- Search bar -->
-					<form class="form-inline mr-auto ml-md-3">
+					<form class="form-inline ml-auto mr-2 mt-2 mt-md-0">
 						<div class="input-group">
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search">
 							<div class="input-group-append">
@@ -79,7 +79,7 @@
 
 	<!-- Begin page content -->
 	<main class="container">
-		<div class="row create-page">
+		<div class="row big-font">
 			<div class="col-md-10 col-lg-8">
 				<header class="title mb-2">Create New Event</header>
 				<form class="needs-validation ml-1" novalidate>
@@ -141,7 +141,7 @@
 							Event description is required.
 						</div>
 					</div>
-		
+
 					<div class="form-row">
 						<div class="form-group col-lg-5">
 							<label for="capacity">Price</label>
@@ -159,9 +159,9 @@
 							<div class="invalid-feedback">
 								Please enter a valid number.
 							</div>
-						</div>						
+						</div>
 					</div>
-					
+
 					<div class="form-row">
 						<div class="form-group col-lg-5">
 							<label for="promo-code">Promotional Code</label>
@@ -216,7 +216,7 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" integrity="sha256-rTh8vmcE+ZrUK3k9M6QCNZIBmAd1vumeuJkagq0EU3g="
 	 crossorigin="anonymous"></script>
-	 <!-- Include the Quill library -->
+	<!-- Include the Quill library -->
 	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 	<script src="create-form.js"></script>
 </body>

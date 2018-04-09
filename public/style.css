@@ -103,7 +103,7 @@ li:not(.active) .nav-link:hover {
   width: 10em;
 }
 
-.create-page {
+.big-font {
   font-size: 1.1em;
 }
 
@@ -145,6 +145,18 @@ li:not(.active) .nav-link:hover {
   border-radius: 0.25rem;
   font-family: 'Nunito', sans-serif !important;
   font-size: 1rem !important;
+}
+.ql-editor.ql-blank::before {
+  font-style: normal !important;
+}
+
+.register .row {
+  height: 100%;
+}
+
+.register input,
+button[type="submit"] {
+  font-size: 1em;
 }
 
 @media (min-width: 768px) {
