@@ -76,6 +76,37 @@ form.submit(event => {
 			$('#end-time').css('border-color', '#28a745');
 		}
 	}
+
+	//submit request 
+	//convert date to milliseconds
+	let startDate = datePicker.get('select').pick + startPicker.get('select').pick * 60000;
+	let endDate = datePicker.get('select').pick + endPicker.get('select').pick * 60000;
+	let newEvent = {
+		eventName: $('#event-name').val().trim(),
+		summary: $('#overview').val().trim(),
+		address: $('#address').val().trim(),
+		startDate: startDate,
+		endDate: endDate,
+		fullDesc: quill.getText(),
+		capacity: $('#capacity').val(),
+		promoCode: $('#promo-code').val().trim(),
+		discount: $('#discount').val(),
+	};
+
+	$.ajax({
+		type: 'POST',
+		url: '/create',
+		data: newEvent,
+		success: (eventCreated) => {
+			//redirect user to event page
+			window.location.href = `/event/${eventCreated.id}`;
+		},
+		error: (err) => {
+			console.log(err);
+		},
+		
+	});
+	
 });
 
 // check if start time < end time
