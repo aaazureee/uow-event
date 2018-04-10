@@ -14,9 +14,3 @@ function checkPw() {
   }
 }
 
-// submit
-$('main form').eq(0).submit(event => {
-  console.log('123');
-  event.preventDefault();
-  console.log('123');
-});
