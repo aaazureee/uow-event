@@ -8,18 +8,19 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  let data = req.body;
+  const {eventName, summary, address, fullDesc, capacity, promoCode, discount, price} = req.body;
+
   Event.create({
-    eventName: data.eventName,
-    summary: data.summary,
-    address: data.address,
-    startDate: new Date(data.startDate),
-    endDate: new Date(data.endDate),
-    fullDesc: data.fullDesc,
-    capacity: data.capacity,
-    promoCode: data.promoCode,
-    discount: data.discount,
-    price: data.price,
+    eventName,
+    summary,
+    address,
+    startDate: new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate),
+    fullDesc,
+    capacity,
+    promoCode,
+    discount,
+    price,
   }).then((event) => {
     res.status(201).json({id: event.eventId});
   }).catch((error) => {

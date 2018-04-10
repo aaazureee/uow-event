@@ -89,12 +89,14 @@ form.onsubmit = event => {
 	if (!form.checkValidity()) valid = false; // html5 input check
 	if (valid === false) return false;
 	//convert date to milliseconds
+	const { hour: startHour, mins: startMin } = startPicker.get('select');
+	const { hour: endHour, mins: endMin } = endPicker.get('select');
 	let startDate = new Date(datePicker.get('select').obj.getTime());
-	startDate.setHours(startPicker.get('select').hour);
-	startDate.setMinutes(startPicker.get('select').mins);
+	startDate.setHours(startHour);
+	startDate.setMinutes(startMin);
 	let endDate = new Date(datePicker.get('select').obj.getTime());
-	endDate.setHours(endPicker.get('select').hour);
-	endDate.setMinutes(endPicker.get('select').mins);
+	endDate.setHours(endHour);
+	endDate.setMinutes(endMin);
 	let newEvent = {
 		eventName: $('#event-name').val().trim(),
 		summary: $('#overview').val().trim(),
