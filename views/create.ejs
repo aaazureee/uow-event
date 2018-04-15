@@ -2,88 +2,30 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Create New Event - Event Booking System</title>
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
-	 crossorigin="anonymous">
-	<!-- Custom styles for this template -->
-	<link href="style.css" rel="stylesheet">
-	<!-- Include pickadate -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" integrity="sha256-HJnF0By+MMhHfGTHjMMD7LlFL0KAQEMyWB86VbeFn4k="
-	 crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css"
-	 integrity="sha256-Ex8MCGbDP5+fEwTgLt8IbGaIDJu2uj88ZDJgZJrxA4Y=" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.time.css"
-	 integrity="sha256-0GwWH1zJVNiu4u+bL27FHEpI0wjV0hZ4nSSRM2HmpK8=" crossorigin="anonymous" />
-	<!-- Quilljs -->
-	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+	<%- include partials/html-head %>
+		<!-- Include pickadate -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" integrity="sha256-HJnF0By+MMhHfGTHjMMD7LlFL0KAQEMyWB86VbeFn4k="
+		 crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css"
+		 integrity="sha256-Ex8MCGbDP5+fEwTgLt8IbGaIDJu2uj88ZDJgZJrxA4Y=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.time.css"
+		 integrity="sha256-0GwWH1zJVNiu4u+bL27FHEpI0wjV0hZ4nSSRM2HmpK8=" crossorigin="anonymous" />
+		<!-- Quilljs -->
+		<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="create-page">
 
-	<header>
-		<!-- Fixed navbar -->
-		<nav class="p-3 navbar navbar-expand-md navbar-light fixed-top bg-white">
-			<div class="container">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-				 aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav">
-						<li class="nav-item home">
-							<a class="nav-link" href="./index.html">Home</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="./create.html">Create event</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Booked events</a>
-						</li>
-					</ul>
-
-					<!-- Search bar -->
-					<form class="form-inline mr-auto ml-md-3">
-						<div class="input-group">
-							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search">
-							<div class="input-group-append">
-								<button class="btn btn-sm" type="submit">
-									<i class="fas fa-search"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-
-					<!-- Username dropdown -->
-					<ul class="navbar-nav">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-							 aria-expanded="false">
-								Username
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Sign Out</a>
-							</div>
-						</li>
-					</ul>
-
-				</div>
-			</div>
-		</nav>
-	</header>
+	<%- include partials/navbar %>
 
 	<!-- Begin page content -->
 	<main class="container">
-		<div class="row create-page">
+		<div class="row big-font">
 			<div class="col-md-10 col-lg-8">
-				<header class="title mb-2">Create New Event</header>
+				<header class="title mt-3 mb-2">Create New Event</header>
 				<form class="needs-validation ml-1" novalidate>
-					<div class="form-group">
+					<div class="form-group mt-2">
 						<label for="event-name">Event Name</label>
 						<input type="text" class="form-control" id="event-name" placeholder="Event name" required>
 						<div class="invalid-feedback">
@@ -141,7 +83,7 @@
 							Event description is required.
 						</div>
 					</div>
-		
+
 					<div class="form-row">
 						<div class="form-group col-lg-5">
 							<label for="capacity">Price</label>
@@ -159,9 +101,9 @@
 							<div class="invalid-feedback">
 								Please enter a valid number.
 							</div>
-						</div>						
+						</div>
 					</div>
-					
+
 					<div class="form-row">
 						<div class="form-group col-lg-5">
 							<label for="promo-code">Promotional Code</label>
@@ -186,39 +128,28 @@
 						</div>
 					</div>
 
-					<button class="btn btn-primary" type="submit">Submit form</button>
+					<button class="btn btn-primary mb-5" type="submit">Submit form</button>
 				</form>
 			</div>
 		</div>
 	</main>
 
-	<!-- Sticky Footer -->
-	<footer class="footer mt-5">
-		<div class="container py-2 text-center">
-			<div class="text-muted mt-1">UOW Event Booking System</div>
-			<div class="text-muted mb-1">Atom Industry © 2018</div>
-		</div>
-	</footer>
+	<%- include partials/footer %>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	 crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.js" integrity="sha256-A1y8n02GW5dvJFkEOX7UCbzJoko8kqgWUquWf9TWFS8="
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js" integrity="sha256-vFMKre5X5oQN63N+oJU9cJzn22opMuJ+G9FWChlH5n8="
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" integrity="sha256-rTh8vmcE+ZrUK3k9M6QCNZIBmAd1vumeuJkagq0EU3g="
-	 crossorigin="anonymous"></script>
-	 <!-- Include the Quill library -->
-	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-	<script src="create-form.js"></script>
+	<%- include partials/html-scripts %>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.js" integrity="sha256-A1y8n02GW5dvJFkEOX7UCbzJoko8kqgWUquWf9TWFS8="
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js" integrity="sha256-vFMKre5X5oQN63N+oJU9cJzn22opMuJ+G9FWChlH5n8="
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" integrity="sha256-rTh8vmcE+ZrUK3k9M6QCNZIBmAd1vumeuJkagq0EU3g="
+		 crossorigin="anonymous"></script>
+		<!-- Include the Quill library -->
+		<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+		<script src="/assets/create-form.js"></script>
 </body>
 
 </html>

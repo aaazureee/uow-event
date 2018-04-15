@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+		<title>Sign In - Event Booking System</title>
+		<%- include partials/html-head %>
+</head>
+
+<body>
+	<%- include partials/navbar %>
+
+		<!-- Begin page content -->
+		<main class="container sign-in big-font">
+			<div class="row justify-content-center fix">
+				<div class="col-8 col-md-6 col-lg-5 align-self-center">
+					<!-- white block -->
+					<div class="row align-items-center justify-content-center border rounded bg-white">
+						<div class="col px-5 pb-5 pt-3">
+							<header class="title text-center mt-2 mb-3">Sign In</header>
+							<form method="POST" action="/sign-in">
+								<div class="form-group">
+									<label for="username" class="sr-only">Username</label>
+									<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="sr-only">Password</label>
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+								</div>
+
+								<div class="form-check mb-3">
+									<input class="form-check-input" type="checkbox" value="remember" id="rememberMe">
+									<label class="form-check-label" for="rememberMe">
+										Remember me
+									</label>
+								</div>
+
+								<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Sticky Footer -->
+		<%- include partials/footer %>
+
+			<!-- Bootstrap core JavaScript
+    ================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<%- include partials/html-scripts %>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>
+		Register As
+		<%= register_type %> - Event Booking System
+	</title>
+	<%- include partials/html-head %>
+</head>
+
+<body>
+	<%- include partials/navbar %>
+		<!-- Begin page content -->
+		<main class="container register big-font">
+			<div class="row justify-content-center fix">
+				<div class="col-8 col-md-6 col-lg-5 align-self-center">
+					<!-- white block -->
+					<div class="row border rounded bg-white">
+						<div class="col back px-3 pt-2 text-right">
+							<a href="/register" type="button" class="close" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</a>
+						</div>
+
+						<div class="col-12 mb-2 px-5 pb-5">
+							<header class="title text-center mt-2 mb-3">
+								<%= register_type %> Registration
+							</header>
+							<% register_type = register_type[0].toLowerCase() + register_type.slice(1) %>
+								<form method="POST" action="/<%= register_type %>-register">
+									<div class="form-group">
+										<label for="username" class="sr-only">Username</label>
+										<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+									</div>
+
+									<div class="form-group">
+										<label for="email" class="sr-only">Email</label>
+										<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+									</div>
+
+									<div class="form-group">
+										<label for="password" class="sr-only">Password</label>
+										<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+									</div>
+
+									<div class="form-group">
+										<label for="confPassword" class="sr-only">Confirm password</label>
+										<input type="password" name="confPassword" class="form-control" id="confPassword" placeholder="Confirm password" required>
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Sticky Footer -->
+		<%- include partials/footer %>
+
+			<!-- Bootstrap core JavaScript
+    ================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<%- include partials/html-scripts %>
+				<script type="text/javascript" src="/assets/register-form.js"></script>
+</body>
+
+</html>

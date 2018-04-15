@@ -2,17 +2,23 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   background: #FAFAFA;
   font-family: 'Nunito', sans-serif;
 }
 
-header {
+.header {
   min-height: 11.5vh;
 }
 
 main {
   flex: auto;
+}
+
+main.register,
+main.pre-register,
+main.sign-in {
+  display: flex;
 }
 
 .footer {
@@ -155,9 +161,8 @@ li:not(.active) .nav-link:hover {
   font-style: normal !important;
 }
 
-.register .row,
-.pre-register .row {
-  height: 100%;
+.fix {
+  flex: 1;
 }
 
 .register input,
@@ -172,6 +177,10 @@ button[type="submit"],
 
 .pre-register .border {
   height: 20em !important;
+}
+
+.close {
+  -webkit-appearance: none !important;
 }
 
 a.close:hover {
