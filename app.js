@@ -19,6 +19,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('open', () => console.log('Connection to database established'));
 
+app.set('view engine', 'ejs');
+app.use('/assets', express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret: 'tuturu',
   resave: true,
@@ -28,10 +32,6 @@ app.use(session({
   })
 }));
 
-app.set('view engine', 'ejs');
-app.use('/assets', express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // construct res.locals from session to pass to other middlewares
 // check authentication
@@ -49,6 +49,12 @@ app.use((req, res, next) => {
 
 app.use('/', homeRouter);
 app.use('/event', eventRouter);
+app.get('/ev', (req, res) => {
+  res.render('event-page', {
+    page: null,
+    username: null
+  });
+});
 
 //page not found handler
 app.use((req, res, next) => {

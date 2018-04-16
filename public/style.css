@@ -25,7 +25,7 @@ main.sign-in {
   background: white;
 }
 
-.btn.btn-sm {
+.search {
   background: white;
   border: 1px solid #CED4DA;
 }
@@ -50,7 +50,7 @@ li:not(.active) .nav-link:hover {
   background: #039BE5;
 }
 
-.card {
+.home-page .card {
   min-height: 25em;
 }
 
@@ -101,7 +101,7 @@ li:not(.active) .nav-link:hover {
   margin-left: 0.5em;
 }
 
-.card-text {
+.home-page .card-text {
   font-size: 1.1em;
 }
 
@@ -189,6 +189,19 @@ a.close:hover {
 
 @media (min-width: 992px) {
   .home {
-    margin-left: -0.42em;
+    margin-left: -0.45em;
   }
+}
+
+a:active, a:focus {
+  outline: 0;
+}
+
+.event-page .card-body {
+  margin: -0.5em 0;
+}
+
+.card-flex {
+  display: flex;
+  align-items: center;
 }

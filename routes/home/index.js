@@ -20,14 +20,14 @@ router.get('/', (req, res, next) => {
       }
       let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mmA');
       let toDate = moment(event.endDate).format('hh:mmA');
-      event.durationString = `${fromDate} - ${toDate}`;
+      event.durationString = `${fromDate} to ${toDate}`;
       return event;
     });
 
     res.render('index', {
       title: 'Event Booking System',
-      events: events,
-      username: res.locals.username
+      events,
+      page: 'home'
     });
     
   });
