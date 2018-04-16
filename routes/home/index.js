@@ -3,26 +3,18 @@ import moment from 'moment';
 import Event from '../../models/event';
 import registerRouter from './register';
 import signInRouter from './sign-in';
+import searchRouter from './search';
+import parseEvents from '../common/parseEvents';
 
 const router = express.Router();
 
 router.use('/', registerRouter);
 router.use('/', signInRouter);
+router.use('/', searchRouter);
 
 router.get('/', (req, res, next) => {
   Event.find().then(result => {
-    let events = result.map(value => {
-      let event = value.toObject();
-      if (!event.price) {
-        event.price = 'Free';
-      } else {
-        event.price = '$' + event.price;
-      }
-      let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mmA');
-      let toDate = moment(event.endDate).format('hh:mmA');
-      event.durationString = `${fromDate} - ${toDate}`;
-      return event;
-    });
+    let events = parseEvents(result);
 
     res.render('index', {
       title: 'Event Booking System',
