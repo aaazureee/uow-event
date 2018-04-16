@@ -187,7 +187,7 @@ a.close:hover {
   color: #039BE5 !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .home {
     margin-left: -0.42em;
   }
