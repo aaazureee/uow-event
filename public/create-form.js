@@ -88,15 +88,17 @@ form.onsubmit = event => {
 	//submit request
 	if (!form.checkValidity()) valid = false; // html5 input check
 	if (valid === false) return false;
-	//convert date to milliseconds
+	// construct start Date and end Date object
 	const { hour: startHour, mins: startMin } = startPicker.get('select');
 	const { hour: endHour, mins: endMin } = endPicker.get('select');
-	let startDate = new Date(datePicker.get('select').obj.getTime());
+	const date = datePicker.get('select').obj.getTime();
+	let startDate = new Date(date);
 	startDate.setHours(startHour);
 	startDate.setMinutes(startMin);
-	let endDate = new Date(datePicker.get('select').obj.getTime());
+	let endDate = new Date(date);
 	endDate.setHours(endHour);
 	endDate.setMinutes(endMin);
+	
 	let newEvent = {
 		eventName: $('#event-name').val().trim(),
 		summary: $('#overview').val().trim(),
@@ -112,14 +114,14 @@ form.onsubmit = event => {
 
 	$.ajax({
 		type: 'POST',
-		url: '/create',
+		url: '/event/create',
 		data: JSON.stringify(newEvent),
 		contentType: 'application/json',
-		success: (eventCreated) => {
+		success: eventCreated => {
 			//redirect user to event page
 			window.location.href = `/event/${eventCreated.id}`;
 		},
-		error: (err) => {
+		error: err => {
 			console.log(err);
 		},
 		
