@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="event-page">
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <div class="card-flex mt-3">
+        <header class="title mb-0">Resume Writing 101</header>
+        <a href="#" class="btn btn-sm btn-info ml-3">Edit</a>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <div class="info">
+            <div class="mb-2">
+              <i class="far fa-calendar-alt">
+                <span class="font-italic">
+                  Thu 26 Apr 2018, 2:30 PM to 3:30 PM
+                </span>
+              </i>
+            </div>
+            <div class="mb-2">
+              <i class="fas fa-map-marker-alt">
+                <span class="font-italic">
+                  Careers Central Seminar Room, Building 11, First floor, Room 121
+                </span>
+              </i>
+            </div>
+            <div class="mb-2">
+              <i class="fas fa-dollar-sign">
+                <span class="font-italic">
+                  $20
+                </span>
+              </i>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-8">
+              <div class="card mt-3">
+                <h5 class="card-header">Description</h5>
+                <div class="card-body">
+                  <p class="card-text">
+                    Writing a resume for the first time or need to update an old resume? This workshop will give you the tips and advice you
+                    need! We'll cover formatting and content to help you best present your relevant experiences and skills,
+                    provide you with specific examples of what works, and answer your questions. Visit the Careers Central
+                    website for tips and examples.
+                  </p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-primary book-in mt-3">Book In</a>
+            </div>
+
+            <div class="col-4">
+              <div class="card mt-3">
+                <h5 class="card-header">Other Information</h5>
+                <div class="card-body">
+                  <strong class="card-text">
+                    Maximum capacity:
+                  </strong>
+                  <div class="card-text mb-2">
+                    40
+                  </div>
+                  <strong class="card-text">
+                    Current bookings:
+                  </strong>
+                  <div class="card-text mb-2">
+                    15
+                  </div>
+                  <strong class="card-text">
+                    Promotional Code:
+                  </strong>
+                  <div class="card-text mb-2">
+                    KAPPA123
+                  </div>
+                  <strong class="card-text">
+                    Discount Percentage:
+                  </strong>
+                  <div class="card-text">
+                    50%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <%- include partials/html-scripts %>
+</body>
+
+</html>

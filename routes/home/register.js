@@ -4,20 +4,25 @@ import User from '../../models/user';
 const router = express.Router();
 
 router.get('/register', (req, res) => {
-  res.render('pre-register', { username: res.locals.username });
+  res.render('pre-register', {
+    username: res.locals.username,
+    page: 'register'
+  });
 });
 
 router.get('/student-register', (req, res) => {
   res.render('register', {
     register_type: 'Student',
-    username: res.locals.username
+    username: res.locals.username,
+    page: 'register'
   });
 });
 
 router.get('/staff-register', (req, res) => {
   res.render('register', {
     register_type: 'Staff',
-    username: res.locals.username
+    username: res.locals.username,
+    page: 'register'
   });
 });
 
