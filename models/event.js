@@ -43,6 +43,8 @@ const eventSchema = new Schema({
   price: Number
 });
 
+eventSchema.index({eventName: 'text', summary: 'text'});
+
 eventSchema.pre('save', function (next) {
   var event = this;
   Counter.count({}).then(count => {
