@@ -16,8 +16,8 @@ router.get('/', (req, res, next) => {
   Event.find().then(result => {
     let events = parseEvents(result);
     res.render('index', {
-      title: 'Event Booking System',
       events,
+      username: res.locals.username,
       page: 'home'
     });
     

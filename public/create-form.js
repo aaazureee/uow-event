@@ -119,7 +119,7 @@ form.onsubmit = event => {
 		contentType: 'application/json',
 		success: eventCreated => {
 			//redirect user to event page
-			window.location.href = `/event/${eventCreated.id}`;
+			window.location.href = `/event/id/${eventCreated.id}`;
 		},
 		error: err => {
 			console.log(err);

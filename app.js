@@ -37,11 +37,14 @@ app.use(session({
 // check authentication
 app.use((req, res, next) => {
   res.locals.username = null;
+  res.locals.type = null;
+
   User.findOne({ username: req.session.username })
     .then(user => {
       if (user) {
         req.session.username = user.username;
         res.locals.username = user.username;
+        res.locals.type = user.userType;
       }
       return next();
     });
@@ -49,11 +52,21 @@ app.use((req, res, next) => {
 
 app.use('/', homeRouter);
 app.use('/event', eventRouter);
+
+// event page
 app.get('/ev', (req, res) => {
   res.render('event-page', {
-    page: null,
-    username: null
+    username: res.locals.username,
+    page: null
   });
+});
+
+// booked page
+app.get('/booked', (req, res) => {
+  res.render('booked', {
+    username: res.locals.username,
+    page: null
+  })
 });
 
 //page not found handler

@@ -4,7 +4,7 @@ import Event from '../../models/event';
 import createRouter from './create';
 
 router.use('/create', createRouter);
-router.get('/:eventID', (req, res, next) => {
+router.get('/id/:eventID', (req, res, next) => {
   Event.findOne({ eventId: req.params.eventID }).then(result => {
     if (!result) {
       return res.render('error_views/event-not-found',
@@ -14,6 +14,9 @@ router.get('/:eventID', (req, res, next) => {
       event: result,
       username: res.locals.username
     });
+  }).catch(err => {
+    return res.render('error_views/event-not-found',
+    { eventID: req.params.eventID });
   });
 });
 

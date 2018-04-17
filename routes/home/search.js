@@ -11,7 +11,8 @@ router.get('/search', (req, res) => {
     res.render('search', {
       events,
       searchString: req.query.q,
-      username: res.locals.username
+      username: res.locals.username,
+      page: null
     });
   });
 });
