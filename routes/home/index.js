@@ -4,7 +4,7 @@ import Event from '../../models/event';
 import registerRouter from './register';
 import signInRouter from './sign-in';
 import searchRouter from './search';
-import parseEvents from '../common/parseEvents';
+import { parseEvents } from '../common/eventParser';
 
 const router = express.Router();
 

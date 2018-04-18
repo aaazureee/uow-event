@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import Event from '../../models/event';
 import createRouter from './create';
+import { parseEvent } from '../common/eventParser';
 
 router.use('/create', createRouter);
 router.get('/id/:eventID', (req, res, next) => {
@@ -10,9 +11,10 @@ router.get('/id/:eventID', (req, res, next) => {
       return res.render('error_views/event-not-found',
         { eventID: req.params.eventID });
     }
-    res.render('event-details.ejs', {
-      event: result,
-      username: res.locals.username
+    res.render('event-page.ejs', {
+      event: parseEvent(result),
+      username: res.locals.username,
+      page: null
     });
   }).catch(err => {
     return res.render('error_views/event-not-found',
