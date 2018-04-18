@@ -1,8 +1,12 @@
 import moment from 'moment';
 
-export default function (inputEvents) {
-  let outputEvents = inputEvents.map(value => {
-    let event = value.toObject();
+export function parseEvents(inputEvents) {
+  let outputEvents = inputEvents.map(parseEvent);
+  return outputEvents;
+}
+
+export function parseEvent(inputEvent) {
+  let event = inputEvent.toObject();
     if (!event.price) {
       event.price = 'Free';
     } else {
@@ -12,6 +16,4 @@ export default function (inputEvents) {
     let toDate = moment(event.endDate).format('hh:mm A');
     event.durationString = `${fromDate} to ${toDate}`;
     return event;
-  });
-  return outputEvents;
 }

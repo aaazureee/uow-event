@@ -12,9 +12,7 @@
     <!-- Begin page content -->
     <main class="container">
       <div class="card-flex mt-3">
-        <header class="title mb-0">
-          <%= event.eventName %>
-        </header>
+        <header class="title mb-0"><%= event.eventName %></header>
         <a href="#" class="btn btn-sm btn-info ml-3">Edit</a>
       </div>
       <div class="row mt-2">
@@ -30,7 +28,7 @@
             <div class="mb-2">
               <i class="fas fa-map-marker-alt">
                 <span class="font-italic">
-                  <%= event.address %>
+                  <%= event.address%>
                 </span>
               </i>
             </div>
@@ -76,13 +74,21 @@
                     Promotional Code:
                   </strong>
                   <div class="card-text mb-2">
-                    <%= event.promoCode %>
+                    <% if (!event.promoCode) { %>
+                      N/A
+                    <% } else { %>
+                      <%= event.promoCode %>
+                    <% } %>
                   </div>
                   <strong class="card-text">
                     Discount Percentage:
                   </strong>
                   <div class="card-text">
-                    <%= event.discount %>
+                  <% if (!event.discount) { %>
+                    N/A
+                  <% } else { %>
+                    <%= event.discount %>%
+                  <% } %>
                   </div>
                 </div>
               </div>

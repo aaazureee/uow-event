@@ -4,7 +4,7 @@ import registerRouter from './register';
 import signInRouter from './sign-in';
 import searchRouter from './search';
 import bookedRouter from './booked';
-import parseEvents from '../common/parseEvents';
+import { parseEvents } from '../common/eventParser';
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.use('/', searchRouter);
 router.use('/', bookedRouter);
 
 router.get('/', (req, res, next) => {
-  Event.find().then(result => {
+  Event.find().where('startDate').gt(new Date()).sort({startDate: 1}).then(result => {
     let events = parseEvents(result);
     res.locals.options.page = 'home';
     res.locals.options.events = events;

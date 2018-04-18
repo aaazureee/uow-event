@@ -1,6 +1,6 @@
 import express from 'express';
 import Event from '../../models/event';
-import parseEvents from '../common/parseEvents';
+import parseEvents from '../common/eventParser';
 
 const router = express.Router();
 
