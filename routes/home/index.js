@@ -13,7 +13,7 @@ router.use('/', signInRouter);
 router.use('/', searchRouter);
 
 router.get('/', (req, res, next) => {
-  Event.find().then(result => {
+  Event.find().where('startDate').gt(new Date()).sort({startDate: 1}).then(result => {
     let events = parseEvents(result);
     res.render('index', {
       events,
