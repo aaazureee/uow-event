@@ -12,7 +12,7 @@
     <!-- Begin page content -->
     <main class="container">
       <div class="card-flex mt-3">
-        <header class="title mb-0">Resume Writing 101</header>
+        <header class="title mb-0"><%= event.eventName %></header>
         <a href="#" class="btn btn-sm btn-info ml-3">Edit</a>
       </div>
       <div class="row mt-2">
@@ -21,21 +21,21 @@
             <div class="mb-2">
               <i class="far fa-calendar-alt">
                 <span class="font-italic">
-                  Thu 26 Apr 2018, 2:30 PM to 3:30 PM
+                  <%= event.durationString %>
                 </span>
               </i>
             </div>
             <div class="mb-2">
               <i class="fas fa-map-marker-alt">
                 <span class="font-italic">
-                  Careers Central Seminar Room, Building 11, First floor, Room 121
+                  <%= event.address%>
                 </span>
               </i>
             </div>
             <div class="mb-2">
               <i class="fas fa-dollar-sign">
                 <span class="font-italic">
-                  $20
+                  <%= event.price %>
                 </span>
               </i>
             </div>
@@ -47,10 +47,7 @@
                 <h5 class="card-header">Description</h5>
                 <div class="card-body">
                   <p class="card-text">
-                    Writing a resume for the first time or need to update an old resume? This workshop will give you the tips and advice you
-                    need! We'll cover formatting and content to help you best present your relevant experiences and skills,
-                    provide you with specific examples of what works, and answer your questions. Visit the Careers Central
-                    website for tips and examples.
+                    <%- event.fullDesc %>
                   </p>
                 </div>
               </div>
@@ -65,25 +62,33 @@
                     Maximum capacity:
                   </strong>
                   <div class="card-text mb-2">
-                    40
+                    <%= event.capacity %>
                   </div>
                   <strong class="card-text">
                     Current bookings:
                   </strong>
                   <div class="card-text mb-2">
-                    15
+                    <%= event.currentBookings %>
                   </div>
                   <strong class="card-text">
                     Promotional Code:
                   </strong>
                   <div class="card-text mb-2">
-                    KAPPA123
+                    <% if (!event.promoCode) { %>
+                      N/A
+                    <% } else { %>
+                      <%= event.promoCode %>
+                    <% } %>
                   </div>
                   <strong class="card-text">
                     Discount Percentage:
                   </strong>
                   <div class="card-text">
-                    50%
+                  <% if (!event.discount) { %>
+                    N/A
+                  <% } else { %>
+                    <%= event.discount %>%
+                  <% } %>
                   </div>
                 </div>
               </div>
