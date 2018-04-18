@@ -36,15 +36,16 @@ app.use(session({
 // construct res.locals from session to pass to other middlewares
 // check authentication
 app.use((req, res, next) => {
-  res.locals.username = null;
-  res.locals.type = null;
-
+  res.locals.options = {
+    username: null,
+    page: null,
+    type: null
+  };
   User.findOne({ username: req.session.username })
     .then(user => {
       if (user) {
-        req.session.username = user.username;
-        res.locals.username = user.username;
-        res.locals.type = user.userType;
+        res.locals.options.username = user.username;
+        res.locals.options.type = user.userType;
       }
       return next();
     });
@@ -55,18 +56,7 @@ app.use('/event', eventRouter);
 
 // event page
 app.get('/ev', (req, res) => {
-  res.render('event-page', {
-    username: res.locals.username,
-    page: null
-  });
-});
-
-// booked page
-app.get('/booked', (req, res) => {
-  res.render('booked', {
-    username: res.locals.username,
-    page: null
-  })
+  res.render('event-page', res.locals.options);
 });
 
 //page not found handler

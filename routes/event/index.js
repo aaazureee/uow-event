@@ -10,11 +10,9 @@ router.get('/id/:eventID', (req, res, next) => {
       return res.render('error_views/event-not-found',
         { eventID: req.params.eventID });
     }
-    res.render('event-details.ejs', {
-      event: result,
-      username: res.locals.username
-    });
-  }).catch(err => {
+    res.locals.options.event = result;
+    res.render('event-page', res.locals.options);
+  }).catch(() => {
     return res.render('error_views/event-not-found',
     { eventID: req.params.eventID });
   });

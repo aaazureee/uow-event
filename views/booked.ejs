@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Booked Events - Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="booked">
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <header class="title my-3">Booking Reminders</header>
+      <div class="row">
+        <div class="col-5">
+          <div class="list-group" id="booking-list" role="tablist">
+            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-1" role="tab">
+              <h5>Resume Writing 101</h5>
+              <small>Wed 25 Apr 2018, 06:30 PM - 09:00 PM</small>
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-2" role="tab">
+              <h5>Cookies and Career Chats</h5>
+              <small>Thu 12 Apr 2018, 11:30 AM - 1:30 PM</small>
+            </a>
+          </div>
+
+
+        </div>
+        <div class="col">
+          <div class="tab-content" id="event-content">
+            <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-home-list">
+              <div class="card">
+                <h5 class="card-header">
+                  <a href="#" class="text-primary">
+                    Resume Writing 101
+                  </a>
+                </h5>
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <p class="card-text">
+                    Writing a resume for the first time or need to update an old resume? This workshop will give you the tips and advice you
+                    need! We'll cover formatting and content to help you best present your relevant experiences and skills,
+                    provide you with specific examples of what works, and answer your questions. Visit the Careers Central
+                    website for tips and examples.
+                  </p>
+                  <div class="info">
+                    <div class="mb-2">
+                      <i class="fas fa-map-marker-alt">
+                        <span class="font-italic">
+                          Careers Central Seminar Room, Building 11, First floor, Room 121
+                        </span>
+                      </i>
+                    </div>
+                    <a href="#" class="btn btn-primary book-in">Book In</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="list-2" role="tabpanel">
+              a
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <%- include partials/html-scripts %>
+</body>
+
+</html>

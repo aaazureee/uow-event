@@ -38,6 +38,10 @@ main.sign-in {
   font-size: 1.1em;
 }
 
+.nav-link:focus {
+  color: rgba(0, 0, 0, .5) !important;
+}
+
 .active .nav-link {
   color: #039BE5 !important;
 }
@@ -74,8 +78,12 @@ li:not(.active) .nav-link:hover {
   font-family: 'Nunito', sans-serif;
 }
 
+/* .card-header a:focus {
+  color: #343a40 !important;
+} */
+
 .card-header a:hover {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: #039BE5 !important;
 }
 
@@ -103,6 +111,10 @@ li:not(.active) .nav-link:hover {
 
 .home-page .card-text {
   font-size: 1.1em;
+}
+
+.card-text p {
+  margin: 0 !important;
 }
 
 .input-group {
@@ -193,7 +205,8 @@ a.close:hover {
   }
 }
 
-a:active, a:focus {
+a:active,
+a:focus {
   outline: 0;
 }
 
@@ -204,4 +217,8 @@ a:active, a:focus {
 .card-flex {
   display: flex;
   align-items: center;
+}
+
+.booked h5 {
+  margin-bottom: 0;
 }
