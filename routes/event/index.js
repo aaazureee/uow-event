@@ -2,10 +2,15 @@ import express from 'express';
 const router = express.Router();
 import Event from '../../models/event';
 import createRouter from './create';
+import updateRouter from './update';
+import deleteRouter from './delete';
 import { parseEvent } from '../common/eventParser';
 
 router.use('/create', createRouter);
-router.get('/id/:eventID', (req, res, next) => {
+router.use('/update', updateRouter); 
+router.use('/delete', deleteRouter);
+
+router.get('/id/:eventID', (req, res) => {
   Event.findOne({ eventId: req.params.eventID }).then(result => {
     if (!result) {
       return res.render('error_views/event-not-found',

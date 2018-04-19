@@ -11,9 +11,21 @@ const timeOption = {
 	max: [22, 0] // max = 10PM
 };
 
-const startPicker = $('#start-time').pickatime(timeOption).pickatime('picker');
-const endPicker = $('#end-time').pickatime(timeOption).pickatime('picker');
-
+let startPicker = $('#start-time').pickatime(timeOption).pickatime('picker');
+let endPicker = $('#end-time').pickatime(timeOption).pickatime('picker');
+startPicker.on('open', () => {
+	startPicker.close();
+});
+endPicker.on('open', () => {
+	endPicker.close();
+});
+$(window).on('load', function () {
+	// hack-fix timepicker pop up if clicked before page loaded
+	setTimeout(() => {
+		startPicker.off('open');
+		endPicker.off('open');
+	}, 500);
+});
 $('#date').click(() => datePicker.open());
 $('#start-time').click(() => startPicker.open());
 $('#end-time').click(() => endPicker.open());
@@ -39,7 +51,7 @@ let form = document.getElementsByClassName('needs-validation')[0];
 form.onsubmit = event => {
 	event.preventDefault();
 	let valid = true;
-	
+
 	//reset
 	$('#discount').prop('required', false);
 	$('#promo-code').prop('required', false);
@@ -98,7 +110,7 @@ form.onsubmit = event => {
 	let endDate = new Date(date);
 	endDate.setHours(endHour);
 	endDate.setMinutes(endMin);
-	
+
 	let newEvent = {
 		eventName: $('#event-name').val().trim(),
 		summary: $('#overview').val().trim(),
@@ -124,9 +136,9 @@ form.onsubmit = event => {
 		error: err => {
 			console.log(err);
 		},
-		
+
 	});
-	
+
 };
 
 // check if start time < end time
