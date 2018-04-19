@@ -1,6 +1,6 @@
 let footer = $('.modal-footer');
 $('.delete').click(function () {
-  $('#deleteModal').on('hide.bs.modal', e => {
+  $('.modal').on('hide.bs.modal', e => {
     e.preventDefault();
   });
 
@@ -22,10 +22,10 @@ $('.delete').click(function () {
       footer.empty();
       footer.html('<a href="/manage-events" class="btn btn-success mr-auto text-white">Back to Manage Events</a>');
       body.text('This event has been succesfully deleted.');
-      $('#deleteModal').on('hidden.bs.modal', () => {
+      $('.modal').on('hidden.bs.modal', () => {
         window.location.href = '/manage-events';
       });
-      $('#deleteModal').off('hide.bs.modal');
+      $('.modal').off('hide.bs.modal');
     },
     error: err => {
       console.log(err);
