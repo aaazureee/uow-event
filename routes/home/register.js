@@ -3,29 +3,28 @@ import User from '../../models/user';
 
 const router = express.Router();
 
+router.use(
+  ['/register', '/student-register', '/staff-register'], (req, res, next) => {
+    res.locals.options.page = 'register';
+    next();
+  });
+
+// pre-register page
 router.get('/register', (req, res) => {
-  res.render('pre-register', {
-    username: res.locals.username,
-    page: 'register'
-  });
+  res.render('pre-register', res.locals.options);
 });
 
+// student-register form
 router.get('/student-register', (req, res) => {
-  res.render('register', {
-    register_type: 'Student',
-    username: res.locals.username,
-    page: 'register'
-  });
+  res.locals.options.register_type = 'Student';
+  res.render('register', res.locals.options);
 });
 
+// staff-register form
 router.get('/staff-register', (req, res) => {
-  res.render('register', {
-    register_type: 'Staff',
-    username: res.locals.username,
-    page: 'register'
-  });
+  res.locals.options.register_type = 'Staff';
+  res.render('register', res.locals.options);
 });
-
 
 const checkRegisterError = async (username, email) => {
   let userNameCount = await User.count({ username });
@@ -42,6 +41,7 @@ const checkRegisterError = async (username, email) => {
   return err;
 };
 
+// handle form submission for student
 router.post('/student-register', async (req, res, next) => {
   const { username, email, password } = req.body;
   const userType = 'student';
@@ -62,6 +62,7 @@ router.post('/student-register', async (req, res, next) => {
     });
 });
 
+// handle form submission for staff
 router.post('/staff-register', async (req, res, next) => {
   const { username, email, password } = req.body;
   const userType = 'staff';

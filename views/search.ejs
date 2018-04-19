@@ -9,67 +9,63 @@
 <body class="home-page">
 	<%- include partials/navbar %>
 
-	<!-- Begin page content -->
-	<main class="container">
-		<header class="title mt-3 mb-0">Search results</header>
-		<small class="text-muted">Showing results for "<%= searchString%>".</small>
-		<!-- Display list of cards -->
-		<div class="row">
-			<% for (let event of events) { %>
-				<div class="col-lg-6 my-3">
-					<div class="card">
-						<h5 class="card-header d-flex justify-content-between">
-							<a href="#" class="text-dark">
-								<%= event.eventName %>
-							</a>
-							<a href="#">
-								<i class="far fa-edit text-muted">
-									<span class="small">Edit</span>
-								</i>
-							</a>
-						</h5>
-						<div class="card-body d-flex flex-column justify-content-between">
-							<p class="card-text">
-								<%= event.summary %>
-							</p>
-							<div class="info">
-								<div class="mb-2">
-									<i class="far fa-calendar-alt">
-										<span class="font-italic">
-											<%= event.durationString %>
-										</span>
-									</i>
+		<!-- Begin page content -->
+		<main class="container">
+			<header class="title mt-3 mb-0">Search results</header>
+			<small class="text-muted">Showing results for "
+				<%= searchString%>"</small>
+			<!-- Display list of cards -->
+			<div class="row">
+				<% for (let event of events) { %>
+					<div class="col-lg-6 my-3">
+						<div class="card">
+							<h5 class="card-header">
+								<a href="#" class="text-dark">
+									<%= event.eventName %>
+								</a>
+							</h5>
+							<div class="card-body d-flex flex-column justify-content-between">
+								<p class="card-text">
+									<%= event.summary %>
+								</p>
+								<div class="info">
+									<div class="mb-2">
+										<i class="far fa-calendar-alt">
+											<span class="font-italic">
+												<%= event.durationString %>
+											</span>
+										</i>
+									</div>
+									<div class="mb-2">
+										<i class="fas fa-map-marker-alt">
+											<span class="font-italic">
+												<%= event.address %>
+											</span>
+										</i>
+									</div>
+									<div class="mb-2">
+										<i class="fas fa-dollar-sign">
+											<span class="font-italic">
+												<%= event.price %>
+											</span>
+										</i>
+									</div>
+									<a href="#" class="btn btn-primary book-in">Book In</a>
 								</div>
-								<div class="mb-2">
-									<i class="fas fa-map-marker-alt">
-										<span class="font-italic">
-											<%= event.address %>
-										</span>
-									</i>
-								</div>
-								<div class="mb-2">
-									<i class="fas fa-dollar-sign">
-										<span class="font-italic">
-											<%= event.price %>
-										</span>
-									</i>
-								</div>
-								<a href="#" class="btn btn-primary book-in">Book In</a>
 							</div>
 						</div>
 					</div>
-				</div>
-				<% } %>
-		</div>
-	</main>
+					<% } %>
+			</div>
+		</main>
 
-	<!-- Sticky Footer -->
-	<%- include partials/footer %>
+		<!-- Sticky Footer -->
+		<%- include partials/footer %>
 
-	<!-- Bootstrap core JavaScript
+			<!-- Bootstrap core JavaScript
     ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<%- include partials/html-scripts %>
+			<!-- Placed at the end of the document so the pages load faster -->
+			<%- include partials/html-scripts %>
 </body>
 
 </html>

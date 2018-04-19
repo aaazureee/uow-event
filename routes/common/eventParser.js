@@ -12,8 +12,8 @@ export function parseEvent(inputEvent) {
     } else {
       event.price = '$' + event.price;
     }
-    let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mmA');
-    let toDate = moment(event.endDate).format('hh:mmA');
-    event.durationString = `${fromDate} - ${toDate}`;
+    let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mm A');
+    let toDate = moment(event.endDate).format('hh:mm A');
+    event.durationString = `${fromDate} to ${toDate}`;
     return event;
 }

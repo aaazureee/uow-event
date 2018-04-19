@@ -4,10 +4,8 @@ import Event from '../../models/event';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('create', {
-    username: res.locals.username,
-    page: 'create'
-  });
+  res.locals.options.page = 'create';
+  res.render('create', res.locals.options);
 });
 
 router.post('/', (req, res, next) => {
