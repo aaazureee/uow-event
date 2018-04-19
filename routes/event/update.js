@@ -20,7 +20,6 @@ router.get('/id/:eventID/', (req, res) => {
 });
 
 router.post('/id/:eventID/', (req, res) => {
-  console.log('posted');
   let { eventName, summary, address, startDate, endDate, fullDesc, capacity, promoCode, discount, price } = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);

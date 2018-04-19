@@ -3,10 +3,6 @@ import Event from '../../models/event';
 
 const router = express.Router();
 
-router.get('/id/:eventID', (req, res) => {
-  res.send({ 'event': req.params.eventID });
-});
-
 router.delete('/id/:eventID', (req, res) => {
   Event.findOneAndRemove({ eventId: req.params.eventID }).then(result => {
     if (!result) {
