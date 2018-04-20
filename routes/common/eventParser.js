@@ -12,6 +12,9 @@ export function parseEvent(inputEvent) {
     } else {
       event.price = '$' + event.price;
     }
+    if (!event.promoCode) {
+      event.promoCode = null;
+    }
     let fromDate = moment(event.startDate).format('ddd D MMM YYYY, hh:mm A');
     let toDate = moment(event.endDate).format('hh:mm A');
     event.durationString = `${fromDate} to ${toDate}`;

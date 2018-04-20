@@ -108,7 +108,7 @@ li:not(.active) .nav-link:hover {
   margin: 0 !important;
 }
 
-.input-group {
+form[action="search"].input-group {
   width: 15em !important;
 }
 
@@ -222,3 +222,19 @@ a:focus {
   width: auto;
   display: inline-block;
 }
+
+.checkout-btn {
+  font-size: 1.1em !important;
+}
+
+.checkout h6 {
+  margin: 0 !important;
+  line-height: unset !important;
+}
+
+.cart {
+  margin-top: 2em;
+}
+
+
+
