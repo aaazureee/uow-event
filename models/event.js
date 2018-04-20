@@ -47,6 +47,9 @@ eventSchema.index({eventName: 'text', summary: 'text'});
 
 eventSchema.pre('save', function (next) {
   var event = this;
+  if (!event.isNew) {
+    next();
+  }
   Counter.count({}).then(count => {
     if (count === 0) {
       Counter.create({
