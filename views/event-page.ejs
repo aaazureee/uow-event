@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>Event Booking System</title>
+  <title>
+    <%= event.eventName %> - Event Booking System</title>
   <%- include partials/html-head %>
 </head>
 
@@ -12,8 +13,31 @@
     <!-- Begin page content -->
     <main class="container">
       <div class="card-flex mt-3">
-        <header class="title mb-0"><%= event.eventName %></header>
-        <a href="#" class="btn btn-sm btn-info ml-3">Edit</a>
+        <header class="title mb-0">
+          <%= event.eventName %>
+        </header>
+        <a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
+        <button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteLabel">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete this event?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger delete">Delete</button>
+                <button type="button" class="btn btn-secondary ml-auto" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row mt-2">
         <div class="col">
@@ -76,19 +100,19 @@
                   <div class="card-text mb-2">
                     <% if (!event.promoCode) { %>
                       N/A
-                    <% } else { %>
-                      <%= event.promoCode %>
-                    <% } %>
+                      <% } else { %>
+                        <%= event.promoCode %>
+                          <% } %>
                   </div>
                   <strong class="card-text">
                     Discount Percentage:
                   </strong>
                   <div class="card-text">
-                  <% if (!event.discount) { %>
-                    N/A
-                  <% } else { %>
-                    <%= event.discount %>%
-                  <% } %>
+                    <% if (!event.discount) { %>
+                      N/A
+                      <% } else { %>
+                        <%= event.discount %>%
+                          <% } %>
                   </div>
                 </div>
               </div>
@@ -105,6 +129,7 @@
     ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
       <%- include partials/html-scripts %>
+        <script src="/assets/delete-event.js"></script>
 </body>
 
 </html>

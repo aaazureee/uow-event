@@ -60,8 +60,8 @@ app.get('/ev', (req, res) => {
 });
 
 //page not found handler
-app.use((req, res, next) => {
-  res.status(404).render('error_views/error');
+app.use((req, res) => {
+  res.status(404).render('error_views/404-error');
 });
 
 //error handler

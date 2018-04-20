@@ -78,15 +78,6 @@ li:not(.active) .nav-link:hover {
   font-family: 'Nunito', sans-serif;
 }
 
-/* .card-header a:focus {
-  color: #343a40 !important;
-} */
-
-.card-header a:hover {
-  /* text-decoration: none; */
-  color: #039BE5 !important;
-}
-
 .title {
   color: #0091EA;
   font-size: 2em;
@@ -127,6 +118,10 @@ li:not(.active) .nav-link:hover {
 
 .big-font {
   font-size: 1.1em;
+}
+
+.big-font .btn {
+  font-size: 1rem;
 }
 
 #date {
@@ -221,4 +216,9 @@ a:focus {
 
 .booked h5 {
   margin-bottom: 0;
+}
+
+.manage .form-control {
+  width: auto;
+  display: inline-block;
 }
