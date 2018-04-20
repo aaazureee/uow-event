@@ -1,10 +1,11 @@
 import express from 'express';
 import Event from '../../models/event';
 import { parseEvents } from '../common/eventParser';
+import { isStaff } from '../common/authCheck';
 
 const router = express.Router();
 
-router.get('/manage-events', async (req, res) => {
+router.get('/manage-events', isStaff, async (req, res) => {
   let events, filter_type;
   switch (req.query.filter_type) {
     case 'past':

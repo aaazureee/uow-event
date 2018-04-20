@@ -1,14 +1,15 @@
 import express from 'express';
 import Event from '../../models/event';
+import { isStaff } from '../common/authCheck';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', isStaff, (req, res) => {
   res.locals.options.page = 'create';
   res.render('create', res.locals.options);
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', isStaff, (req, res, next) => {
   let { eventName, summary, address, startDate, endDate, fullDesc, capacity, promoCode, discount, price } = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);

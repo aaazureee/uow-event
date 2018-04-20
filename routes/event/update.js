@@ -1,25 +1,29 @@
 import express from 'express';
 import Event from '../../models/event';
 import { parseEvent } from '../common/eventParser';
-
+import { isStaff } from '../common/authCheck';
 const router = express.Router();
 
-router.get('/id/:eventID/', (req, res) => {
+router.get('/id/:eventID/', isStaff, (req, res) => {
   res.locals.options.page = 'manage-events';
   Event.findOne({ eventId: req.params.eventID }).then(result => {
     if (!result) {
-      return res.render('error_views/event-not-found',
-        { eventID: req.params.eventID });
+      return res.status(404).render('error_views/event-not-found', {
+        error: 'There is no event with id: ' + req.params.eventID,
+        link: '/'
+      });
     }
     res.locals.options.event = parseEvent(result);
     res.render('update-event', res.locals.options);
   }).catch(() => {
-    return res.render('error_views/event-not-found',
-      { eventID: req.params.eventID });
+    return res.status(404).render('error_views/event-not-found', {
+      error: 'There is no event with id: ' + req.params.eventID,
+      link: '/'
+    });
   });
 });
 
-router.post('/id/:eventID/', (req, res) => {
+router.post('/id/:eventID/', isStaff, (req, res) => {
   let { eventName, summary, address, startDate, endDate, fullDesc, capacity, promoCode, discount, price } = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);

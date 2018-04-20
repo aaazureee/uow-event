@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Event not found</title>
+  <title>Event Not Found</title>
+  <style>
+    div {
+      font-size: 1.1em;
+      margin: 0.25em 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>There is no event with id: <%= eventID  %></h1>
+  <div><%= error %></div>
+  <a href="<%= link %>">Go back</a>
 </body>
 </html>
