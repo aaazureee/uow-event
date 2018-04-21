@@ -11,29 +11,27 @@ if (button.data('status') === 'book-in') {
   data.type = 'cancel';
 }
 
-button.click( () => {
-  $.ajax({
-    type: 'POST',
-    url: '/event/book',
-    data: JSON.stringify(data),
-    contentType: 'application/json',
-    success: data => {
-      if (!data.error) {
-        window.location.reload();
-      } else {
-        if (data.error.type === 'eventFull') {
-          //Modal
-          $('#event-modal .modal-body p').text('This event is currently fully booked');
-          $('#event-modal').modal('show');
+if ( button.data('price') === 'Free') {
+  button.click(() => {
+    $.ajax({
+      type: 'POST',
+      url: '/event/book',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      success: data => {
+        if (!data.error) {
+          window.location.reload();
+        } else {
           $('#event-modal').on('hide.bs.modal', () => {
             window.location.reload();
           });
-        } else if (data.error.type === 'eventNonExistent') {
-          $('#event-modal .modal-body p').text('This event no longer exists');
-        } else {
-          alert('An error has occured: ' + data.error.message);
+          $('#event-modal .modal-body p').text(data.error.message);
         }
-      }
-    },
+      },
+    });
   });
-});
+} else {
+  button.click(() => {
+    window.location.href = `/event/id/${eventId}/checkout`;
+  });
+}

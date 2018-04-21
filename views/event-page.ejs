@@ -77,14 +77,18 @@
                   </div>
                 </div>
               </div>
-              <% if (eventFull) { %>
+              <% if (eventFull && !booked) { %>
               <div class="alert alert-danger">This event is currently fully booked.</div>
               <% } %>
-              <button id="btn-book" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-3 " <%= eventFull ? 'disabled' : '' %> >
+
+              <% if (event.endDate > new Date() && username != null ) { %>
+              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-3 " <%= eventFull && !booked ? 'disabled' : '' %> >
               <%= booked ? 'Cancel' : 'Book in' %>
               </button>
+              <% } %>
             </div>
 
+            <% if (type === 'staff') { %>
             <div class="col-4">
               <div class="card mt-3">
                 <h5 class="card-header">Other Information</h5>
@@ -124,6 +128,8 @@
                 </div>
               </div>
             </div>
+            <% } %>
+
           </div>
         </div>
       </div>

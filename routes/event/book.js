@@ -13,7 +13,9 @@ router.post('/', async (req, res, next) => {
       if (!event) {
         res.json({error: {type: 'eventNonExistent', message: 'Event no longer exists'}});
       } else if (event.currentBookings >= event.capacity) {
-        res.json({error: {type: 'eventFull', message: 'Event fully booked'}});
+        res.json({error: {type: 'eventFull', message: 'Event is already fully booked'}});
+      } else if (event.endDate < new Date()) {
+        res.json({error: {type: 'eventEnded', message: 'Event has already ended'}});
       } else {
         //process booking
         event.currentBookings += 1;
