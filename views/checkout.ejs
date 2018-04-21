@@ -96,18 +96,38 @@
                 <label for="promo" class="sr-only">Promo code</label>
                 <input class="form-control" id="promo" placeholder="Promo code" type="text">
                 <div class="input-group-append">
-                  <button type="button" class="redeem btn btn-secondary">Redeem</button>
+                  <button type="button" data-eventid="<%= event.eventId %>" class="redeem btn btn-secondary">Redeem</button>
                 </div>
               </div>
             </div>
             <div class="invalid text-danger" style="display: none;">
               Invalid promo code.
             </div>
-            <button class="checkout-btn btn btn-success btn-block btn-lg mt-3 mb-4" type="submit">Checkout</button>
+            <button class="checkout-btn btn btn-success btn-block btn-lg mt-3 mb-4" data-eventid="<%= event.eventId %>" type="submit">Checkout</button>
           </form>
 
         </div>
     </main>
+
+    <!-- Modal -->
+    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger">Booking failed</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <%- include partials/footer %>
 

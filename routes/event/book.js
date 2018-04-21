@@ -16,6 +16,8 @@ router.post('/', async (req, res, next) => {
         res.json({error: {type: 'eventFull', message: 'Event is already fully booked'}});
       } else if (event.endDate < new Date()) {
         res.json({error: {type: 'eventEnded', message: 'Event has already ended'}});
+      } else if (user.eventsBooked.includes(event.eventId)) {
+        res.json({error: {type: 'alreadyBooked', message: 'You have already booked into this event'}});
       } else {
         //process booking
         event.currentBookings += 1;

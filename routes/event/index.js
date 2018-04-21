@@ -7,7 +7,7 @@ import bookRouter from './book';
 import updateRouter from './update';
 import deleteRouter from './delete';
 import { parseEvent } from '../common/eventParser';
-import { isStaff } from '../common/authCheck';
+import { isSignedIn } from '../common/authCheck';
 
 router.use('/create', createRouter);
 router.use('/book', bookRouter);
@@ -15,7 +15,7 @@ router.use('/update', updateRouter);
 router.use('/delete', deleteRouter);
 
 // view middleware
-router.get(['/id/:eventID', '/id/:eventID/checkout', '/id/:eventID/promo'], (req, res, next) => {
+router.get(['/id/:eventID', '/id/:eventID/checkout'], (req, res, next) => {
   Event.findOne({ eventId: req.params.eventID }).then(result => {
     if (!result) {
       return res.status(404).render('error_views/event-not-found', {
@@ -60,15 +60,23 @@ router.get('/id/:eventID', async (req, res, next) => {
   }
 });
 
-router.get('/id/:eventID/promo', isStaff, (req, res) => {
-  res.send({ promoCode: res.locals.options.event.promoCode });
-});
-
-router.get('/id/:eventID/checkout', (req, res) => {
+router.get('/id/:eventID/checkout', isSignedIn, (req, res) => {
   if (res.locals.options.event.price !== 'Free') {
     return res.render('checkout', res.locals.options);
   }
   return res.redirect('/event/id/' + req.params.eventID);
 });
 
+router.post('/id/:eventId/promo', isSignedIn, async (req, res, next) => {
+  try {
+    let event = await Event.findOne({ eventId: req.params.eventId });
+    if (req.body.promo === event.promoCode) {
+      res.json({valid: true});
+    } else {
+      res.json({valid: false});
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 export default router;
