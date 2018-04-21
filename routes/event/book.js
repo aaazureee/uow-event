@@ -4,7 +4,7 @@ import Event from '../../models/event';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   try {
     let user = await User.findOne({username: res.locals.options.username});
     let event = await Event.findOne({eventId: req.body.eventId});
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({message: err.message});
+    next(err);
   }
 });
 

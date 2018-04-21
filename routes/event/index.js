@@ -13,7 +13,6 @@ router.get('/id/:eventID', async (req, res, next) => {
     let event = await Event.findOne({ eventId: req.params.eventID });
 
     if (!event) {
-      console.log('errored');
       throw new Error('event not found');
     }
 
