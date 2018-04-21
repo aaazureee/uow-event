@@ -64,10 +64,12 @@
               </i>
             </div>
           </div>
-
           <div class="row mb-5">
             <div class="col-8">
-              <div class="card mt-3">
+            <% if (booked) { %>
+            <div class="alert alert-info mt-3 mb-3">You are currently booked into this event</div>
+            <% } %>
+              <div class="card mt-3 mb-3">
                 <h5 class="card-header">Description</h5>
                 <div class="card-body">
                   <div class="card-text">
@@ -75,9 +77,18 @@
                   </div>
                 </div>
               </div>
-              <a href="#" class="btn btn-primary book-in mt-3">Book In</a>
+              <% if (eventFull && !booked) { %>
+              <div class="alert alert-danger">This event is currently fully booked.</div>
+              <% } %>
+
+              <% if (event.endDate > new Date() && username != null ) { %>
+              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-3 " <%= eventFull && !booked ? 'disabled' : '' %> >
+              <%= booked ? 'Cancel' : 'Book in' %>
+              </button>
+              <% } %>
             </div>
 
+            <% if (type === 'staff') { %>
             <div class="col-4">
               <div class="card mt-3">
                 <h5 class="card-header">Other Information</h5>
@@ -117,11 +128,31 @@
                 </div>
               </div>
             </div>
+            <% } %>
+
           </div>
         </div>
       </div>
     </main>
 
+  <div id="event-modal"class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger">Booking failed</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Sticky Footer -->
     <%- include partials/footer %>
 
@@ -129,7 +160,8 @@
     ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
       <%- include partials/html-scripts %>
-        <script src="/assets/delete-event.js"></script>
+      <script src="/assets/event-page.js"></script>
+      <script src="/assets/delete-event.js"></script>
 </body>
 
 </html>
