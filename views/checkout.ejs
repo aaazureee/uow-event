@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Checkout
+    <%= event.eventName %> - Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="checkout">
+
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <div class="row">
+        <div class="col-4">
+          <header class="title mt-3 mb-2">Checkout form</header>
+          <form autocomplete="off">
+            <div class="form-group">
+              <label for="name">Name on card</label>
+              <input type="text" class="form-control" id="name" required>
+              <small class="form-text text-muted">
+                As displayed on your card.
+              </small>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-8">
+                <label for="cc">Credit card number</label>
+                <input type="text" class="form-control" id="cc" pattern="\d{16}" title="16 digits" required>
+                <small class="form-text text-muted">
+                  No dashes or spaces.
+                </small>
+              </div>
+              <div class="form-group col-4">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv" required pattern="\d{3}" title="3 digits">
+              </div>
+            </div>
+
+            <label for="month">Expiration Date</label>
+            <div class="form-row">
+              <div class="form-group col-8">
+                <select class="form-control custom-select" id="month">
+                  <option value="01">January</option>
+                  <option value="02">February </option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+              <div class="form-group col-4">
+                <label for="year" class="sr-only">Expiration Date</label>
+                <select class="form-control custom-select" id="year">
+                  <option value="18">2018</option>
+                  <option value="19">2019</option>
+                  <option value="20">2020</option>
+                  <option value="21">2021</option>
+                  <option value="22">2022</option>
+                  <option value="23">2023</option>
+                </select>
+              </div>
+            </div>
+            <div class="list-group mb-3">
+              <h5 class="text-muted">Your Cart</h5>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6>
+                    <%= event.eventName %>
+                  </h6>
+                  <small class="price text-muted">
+                    <%= event.price %>
+                  </small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6>
+                    Total
+                  </h6>
+                  <strong>
+                    <%= event.price %>
+                  </strong>
+                </div>
+              </li>
+            </div>
+            <div class="card p-2">
+              <div class="input-group">
+                <label for="promo" class="sr-only">Promo code</label>
+                <input class="form-control" id="promo" placeholder="Promo code" type="text">
+                <div class="input-group-append">
+                  <button type="button" class="redeem btn btn-secondary">Redeem</button>
+                </div>
+              </div>
+            </div>
+            <div class="invalid text-danger" style="display: none;">
+              Invalid promo code.
+            </div>
+            <button class="checkout-btn btn btn-success btn-block btn-lg mt-3 mb-4" type="submit">Checkout</button>
+          </form>
+
+        </div>
+    </main>
+
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+
+      <%- include partials/html-scripts %>
+        <script src="/assets/checkout.js"></script>
+</body>
+
+</html>

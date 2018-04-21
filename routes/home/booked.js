@@ -2,6 +2,7 @@ import express from 'express';
 import User from '../../models/user';
 import Event from '../../models/event';
 import { parseEvents } from '../common/eventParser';
+import { isSignedIn } from '../common/authCheck';
 
 const router = express.Router();
 
