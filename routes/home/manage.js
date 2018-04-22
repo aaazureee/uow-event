@@ -10,7 +10,7 @@ router.get('/manage-events', isStaff, async (req, res) => {
   switch (req.query.filter_type) {
     case 'past':
       events = await Event.find({})
-        .where('endDate').lt(new Date())
+        .where('startDate').lt(new Date())
         .sort('startDate');
       filter_type = 'past';
       break;

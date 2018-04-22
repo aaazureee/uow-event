@@ -13,7 +13,17 @@
 		<main class="container">
 			<header class="title mt-3 mb-0">Search results</header>
 			<small class="text-muted">Showing results for "
-				<%= searchString%>"</small>
+				<%= searchString %>"</small>
+				<!-- Filter -->
+				<form action="/search" class="form-inline mt-3">
+				<input type="hidden" name="q" value="<%= searchString %>" >
+        <label for="filter-events">Filter</label>
+					<select name="filter_type" class="form-control custom-select ml-0 ml-sm-2" id="filter-events" data-selected="<%= filter_type %>">
+						<option value="all">All Events</option>
+						<option value="past">Past Events</option>
+						<option value="upcoming">Upcoming Events</option>
+					</select>
+      	</form>
 			<!-- Display list of cards -->
 			<%- include partials/event-view-cards %>
 		</main>
@@ -25,6 +35,12 @@
     ================================================== -->
 			<!-- Placed at the end of the document so the pages load faster -->
 			<%- include partials/html-scripts %>
+			<script>
+          $('select').val($('select').data('selected'));
+          $('select').change(() => {
+            $('form').get(1).submit();
+          });
+			</script>
 </body>
 
 </html>

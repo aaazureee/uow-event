@@ -75,6 +75,7 @@ app.use((req, res) => {
 
 //error handler
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status = err.status || 500;
   res.send(err.message);
 });
