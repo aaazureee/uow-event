@@ -54,6 +54,7 @@
       <%- include partials/html-scripts %>
         <script src="/assets/delete-event.js"></script>
         <script>
+          $('select').val($('select').data('selected'));
           $('select').change(() => {
             $('form').get(1).submit();
           });

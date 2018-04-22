@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="row mb-5">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
             <% if (booked) { %>
             <div class="alert alert-info mt-3 mb-3">You are currently booked into this event</div>
             <% } %>
@@ -82,14 +82,14 @@
               <% } %>
 
               <% if (event.endDate > new Date() && username != null ) { %>
-              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-3 " <%= eventFull && !booked ? 'disabled' : '' %> >
+              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-0 " <%= eventFull && !booked ? 'disabled' : '' %> >
               <%= booked ? 'Cancel' : 'Book in' %>
               </button>
               <% } %>
             </div>
 
             <% if (type === 'staff') { %>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
               <div class="card mt-3">
                 <h5 class="card-header">Other Information</h5>
                 <div class="card-body">

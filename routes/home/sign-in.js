@@ -19,7 +19,7 @@ router.post('/sign-in', (req, res) => {
     if (req.body.remember_me) {
       req.session.cookie.maxAge = 14 * 24 * 3600 * 1000; // 2 wks
     } else {
-      req.session.cookie.maxAge = 2 * 3600 * 1000; // 2 hrs
+      req.session.cookie.maxAge = 24 * 3600 * 1000; // 1 day
     }
     return res.redirect('/');
   });
