@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+require('dotenv').config();
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -20,10 +21,8 @@ app.use(minify({
   uglifyJsModule: uglifyEs
 }));
 
-// connect to database
-const dbuser = 'test';
-const dbpassword = 'test';
-mongoose.connect(`mongodb://${dbuser}:${dbpassword}@ds115569.mlab.com:15569/event`);
+// connect to database 
+mongoose.connect(process.env.DB_URI);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('open', () => console.log('Connection to database established'));
@@ -33,7 +32,7 @@ app.use('/assets', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
-  secret: 'tuturu',
+  secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({

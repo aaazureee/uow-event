@@ -36,6 +36,7 @@
     "body-parser": "^1.18.2",
     "compression": "^1.7.2",
     "connect-mongo": "^2.0.1",
+    "dotenv": "^5.0.1",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "express-minify": "^1.0.0",

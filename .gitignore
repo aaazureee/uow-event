@@ -2,3 +2,4 @@ node_modules
 .eslintrc.json
 .vscode
 cache
+.env
