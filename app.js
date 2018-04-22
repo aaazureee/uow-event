@@ -5,12 +5,21 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import User from './models/user';
 const MongoStore = require('connect-mongo')(session);
+import compression from 'compression';
+import minify from 'express-minify';
+import uglifyEs from 'uglify-es';
 
 // router
 import homeRouter from './routes/home';
 import eventRouter from './routes/event';
 
 const app = express();
+app.use(compression());
+app.use(minify({
+  cache: __dirname + '/cache',
+  uglifyJsModule: uglifyEs
+}));
+
 // connect to database
 const dbuser = 'test';
 const dbpassword = 'test';
