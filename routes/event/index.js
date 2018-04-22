@@ -71,7 +71,7 @@ router.post('/id/:eventId/promo', isSignedIn, async (req, res, next) => {
   try {
     let event = await Event.findOne({ eventId: req.params.eventId });
     if (req.body.promo === event.promoCode) {
-      res.json({valid: true});
+      res.json({valid: true, discount: event.discount});
     } else {
       res.json({valid: false});
     }

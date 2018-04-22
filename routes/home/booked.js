@@ -6,7 +6,7 @@ import { isSignedIn } from '../common/authCheck';
 
 const router = express.Router();
 
-router.get('/booked-events', async (req, res, next) => {
+router.get('/booked-events', isSignedIn, async (req, res, next) => {
   try {
     let user = await User.findOne({
       username: res.locals.options.username

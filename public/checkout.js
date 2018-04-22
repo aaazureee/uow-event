@@ -9,6 +9,13 @@ $('#promo').focus(() => {
   $('.invalid').hide();
 });
 
+$('#promo').keypress(function (e) {
+  if (e.which == 13) {
+    e.preventDefault();
+    $('.redeem').click();
+  }
+});
+
 $('.redeem').click(() => {
   $.ajax({
     type: 'POST',
@@ -19,8 +26,25 @@ $('.redeem').click(() => {
     success: data => {
       if (data.valid) {
         //TODO
-        console.log('promo');
+        console.log('discount: ' + data.discount);
+        const discountItem = `<li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-success">
+            <h6>Promo code</h6>
+            <small>KAPPA123</small>
+          </div>
+          <small class="text-success">
+            -${data.discount}%
+          </small>
+        </div>
+      </li>`;
+        $('.first').after(discountItem);
+        const total = Number($('.price').text().trim().replace('$', ''));
+        const discounted = (total - total * data.discount / 100).toFixed(2);
+        $('.total').text('$' + discounted);
         $('.invalid').hide();
+        $('.redeem').attr('disabled', true);
+        $('#promo').attr('disabled', true);
       } else {
         $('.invalid').show();
       }
@@ -28,12 +52,8 @@ $('.redeem').click(() => {
   });
 });
 
-$('form').eq(1).submit((e) => {
+$('form').eq(1).submit(e => {
   e.preventDefault();
-  console.log('clicked submit');
-  if ($('form').get(1).checkValidity() === false) {
-    return;
-  }
   $.ajax({
     type: 'POST',
     url: '/event/book',

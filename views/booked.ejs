@@ -16,7 +16,7 @@
         <div class="col-5">
           <div class="list-group" id="booking-list" role="tablist">
             <% for (event of events) { %>  
-              <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-<%= event.eventId %>" role="tab">
+              <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-<%= event.eventId %>" role="tab">
                   <h5><%= event.eventName %></h5>
                   <small><%= event.durationString %></small>
               </a>
@@ -26,7 +26,7 @@
         <div class="col">
           <div class="tab-content" id="event-content">
             <% for (event of events) { %>
-              <div class="tab-pane fade show active" id="list-<%= event.eventId %>" role="tabpanel">
+              <div class="tab-pane fade" id="list-<%= event.eventId %>" role="tabpanel">
                 <div class="card">
                   <h5 class="card-header">
                     <a href="/event/id/<%= event.eventId %>" class="text-primary">

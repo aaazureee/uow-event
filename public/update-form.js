@@ -150,7 +150,7 @@ form.onsubmit = event => {
   };
 
   $.ajax({
-    type: 'POST',
+    type: 'PUT',
     url: window.location.href,
     data: JSON.stringify(updatedEvent),
     contentType: 'application/json',
