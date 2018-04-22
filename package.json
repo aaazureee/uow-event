@@ -7,8 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "start": "babel-watch app.js",
-    "test": "mocha"
+    "start": "babel-watch src/app.js",
+    "test": "mocha",
+    "build": "babel src -d dist --copy-files",
+    "serve": "node dist/app.js"
   },
   "babel": {
     "presets": [
@@ -46,6 +48,7 @@
     "uglify-es": "^3.3.9"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
