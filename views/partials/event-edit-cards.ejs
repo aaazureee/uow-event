@@ -1,0 +1,16 @@
+<div class="row">
+  <% for (let event of events) { %>
+    <div class="col-lg-6 my-3">
+      <div class="card">
+        <h5 class="card-header d-flex align-items-center justify-content-between">
+          <a href="/event/id/<%= event.eventId %>" class="text-primary">
+            <%= event.eventName %>
+          </a>
+          <a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-auto">Edit</a>
+          <button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
+        </h5>
+        <%- include event-preview %>
+      </div>
+    </div>
+    <% } %>
+</div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <% for (let event of events) { %>
+    <div class="col-lg-6 my-3">
+      <div class="card">
+        <h5 class="card-header">
+          <a href="/event/id/<%= event.eventId %>" class="text-primary">
+            <%= event.eventName %>
+          </a>
+        </h5>
+        <%- include event-preview %>
+      </div>
+    </div>
+    <% } %>
+</div>
