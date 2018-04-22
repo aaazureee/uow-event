@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 import compression from 'compression';
 import minify from 'express-minify';
 import uglifyEs from 'uglify-es';
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 
 // router
 import homeRouter from './routes/home';
@@ -40,6 +41,8 @@ app.use(session({
   })
 }));
 
+// redirect to https
+app.use(redirectToHTTPS());
 
 // construct res.locals from session to pass to other middlewares
 // check authentication
