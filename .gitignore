@@ -1,7 +1,7 @@
 node_modules
 .eslintrc.json
 .vscode
-cache/*
-!cache/.gitkeep
+src/cache/*
+!src/cache/.gitkeep
 .env
 dist
