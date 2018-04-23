@@ -17,6 +17,7 @@ $('#promo').keypress(function (e) {
 });
 
 $('.redeem').click(() => {
+  $(this).attr('disabled', true);
   $.ajax({
     type: 'POST',
     data: {

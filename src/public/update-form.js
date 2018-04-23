@@ -149,6 +149,9 @@ form.onsubmit = event => {
     price: $('#price').val(),
   };
 
+  //disable submit button
+  $('.submit-btn').attr('disabled', true);
+
   $.ajax({
     type: 'PUT',
     url: window.location.href,
