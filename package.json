@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "babel-watch src/app.js",
+    "heroku-postbuild": "npm run build",
     "test": "mocha",
     "build": "babel src -d dist --copy-files",
     "serve": "node dist/app.js"
