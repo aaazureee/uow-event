@@ -9,7 +9,8 @@ const MongoStore = require('connect-mongo')(session);
 import compression from 'compression';
 import minify from 'express-minify';
 import uglifyEs from 'uglify-es';
-const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
+import path from 'path';
 
 // router
 import homeRouter from './routes/home';
@@ -28,10 +29,13 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('open', () => console.log('Connection to database established'));
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use('/assets', express.static(__dirname + '/public'));
+app.use('/assets', express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
@@ -52,7 +56,9 @@ app.use((req, res, next) => {
     page: null,
     type: null
   };
-  User.findOne({ username: req.session.username })
+  User.findOne({
+      username: req.session.username
+    })
     .then(user => {
       if (user) {
         res.locals.options.username = user.username;

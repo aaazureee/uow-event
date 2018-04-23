@@ -11,13 +11,13 @@ router.post('/', isSignedIn, async (req, res, next) => {
 
     if (req.body.type === 'book-in') {
       if (!event) {
-        res.json({ error: { type: 'eventNonExistent', message: 'Event no longer exists' } });
+        res.json({ error: { type: 'eventNonExistent', message: 'Event no longer exists.' } });
       } else if (event.currentBookings >= event.capacity) {
-        res.json({ error: { type: 'eventFull', message: 'Event is already fully booked' } });
+        res.json({ error: { type: 'eventFull', message: 'Event is already fully booked.' } });
       } else if (event.endDate < new Date()) {
-        res.json({ error: { type: 'eventEnded', message: 'Event has already ended' } });
+        res.json({ error: { type: 'eventEnded', message: 'Event has already ended.' } });
       } else if (user.eventsBooked.includes(event.eventId)) {
-        res.json({ error: { type: 'alreadyBooked', message: 'You have already booked into this event' } });
+        res.json({ error: { type: 'alreadyBooked', message: 'You have already booked into this event.' } });
       } else {
         //process booking
         event.currentBookings += 1;
