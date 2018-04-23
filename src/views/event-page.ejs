@@ -66,8 +66,12 @@
           </div>
           <div class="row mb-5">
             <div class="col-12 col-md-8">
-            <% if (booked) { %>
-            <div class="alert alert-info mt-3 mb-3">You are currently booked into this event</div>
+            <% if (event.endDate > new Date() && booked) { %>
+            <div class="alert alert-info mt-3 mb-3">You are currently booked into this event.</div>
+            <% } %>
+
+            <% if (event.endDate < new Date()) { %>
+            <div class="alert alert-warning mt-3 mb-3">This event has already ended.</div>
             <% } %>
               <div class="card mt-3 mb-3">
                 <h5 class="card-header">Description</h5>
@@ -77,7 +81,7 @@
                   </div>
                 </div>
               </div>
-              <% if (eventFull && !booked) { %>
+              <% if (eventFull && !booked && event.endDate > new Date()) { %>
               <div class="alert alert-danger">This event is currently fully booked.</div>
               <% } %>
 
@@ -100,7 +104,7 @@
                     <%= event.capacity %>
                   </div>
                   <strong class="card-text">
-                    Current bookings:
+                    Number of bookings:
                   </strong>
                   <div class="card-text mb-2">
                     <%= event.currentBookings %>
