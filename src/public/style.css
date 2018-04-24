@@ -218,11 +218,6 @@ a:focus {
   margin-bottom: 0;
 }
 
-.manage .form-control {
-  width: auto;
-  display: inline-block;
-}
-
 .checkout-btn {
   font-size: 1.1em !important;
 }

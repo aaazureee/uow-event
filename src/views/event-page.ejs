@@ -16,8 +16,10 @@
         <header class="title mb-0">
           <%= event.eventName %>
         </header>
-        <a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
-        <button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
+				<% if (type === 'staff') { %>
+					<a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
+					<button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
+				<% } %>
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
