@@ -1,7 +1,6 @@
 // Date and time picker setup
 const datePicker = $('#date').pickadate({
   editable: true,
-  min: true,
   format: 'ddd d mmmm, yyyy'
 }).pickadate('picker');
 

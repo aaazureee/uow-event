@@ -12,8 +12,11 @@
 		<!-- Begin page content -->
 		<main class="container">
 			<header class="title mt-3 mb-0">Search results</header>
-			<small class="text-muted">Showing results for "
-				<%= searchString %>"</small>
+			<% if (searchString) { %>
+			<small class="text-muted">Showing results for "<%= searchString %>"</small>
+			<% } else { %>
+			<small class="text-muted">Showing all results</small>				
+			<% } %>
 				<!-- Filter -->
 				<form action="/search" class="form-inline mt-3">
 				<input type="hidden" name="q" value="<%= searchString %>" >
