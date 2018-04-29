@@ -235,20 +235,35 @@ a:focus {
   margin-top: 0.25em;
 }
 
+
 @media (max-height: 500px) {
   .register-mobile .footer {
-    margin-top: 2em;
-  }
-  .register-mobile .header {
-    margin-bottom: 3em;
-  }
-}
-
-@media (min-height: 501px) and (max-height: 640px) {
-  .register-mobile .footer {
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
   .register-mobile .header {
     margin-bottom: 2.5em;
   }
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .register-mobile {
+			height: unset;
+		} 
+	}
+}
+
+@media (min-height: 501px) and (max-height: 640px) {
+  .register-mobile .footer {
+    margin-top: 1.5em;
+  }
+  .register-mobile .header {
+    margin-bottom: 2em;
+  }
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .register-mobile {
+			height: unset;
+		} 
+	}
 }
