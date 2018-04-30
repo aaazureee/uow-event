@@ -56,5 +56,9 @@
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
     "mocha": "^5.0.5"
-  }
+  }, 
+	"engines": {
+		"npm": "6.0.0",
+		"node": "8.9.4"
+	}
 }
