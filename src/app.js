@@ -45,7 +45,7 @@ app.use(session({
   })
 }));
 
-// redirect to https
+// redirect to https except localhost
 app.use(redirectToHTTPS([/localhost:(\d{4})/]));
 
 // construct res.locals from session to pass to other middlewares
@@ -68,13 +68,9 @@ app.use((req, res, next) => {
     });
 });
 
+// app main routers
 app.use('/', homeRouter);
 app.use('/event', eventRouter);
-
-// event page
-app.get('/ev', (req, res) => {
-  res.render('event-page', res.locals.options);
-});
 
 //page not found handler
 app.use((req, res) => {
