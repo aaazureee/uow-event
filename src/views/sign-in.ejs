@@ -50,6 +50,20 @@
     ================================================== -->
 			<!-- Placed at the end of the document so the pages load faster -->
 			<%- include partials/html-scripts %>
+			<script>
+				// remember checkbox value by localstorage
+				let storage = window.localStorage;
+				if (storage.getItem('checked')) {
+					$('#rememberMe').attr('checked', JSON.parse(storage.getItem('checked')));
+				}
+				$('form').eq(1).submit(() => {
+					if ($('#rememberMe').is(':checked') === false) {
+						storage.setItem('checked', 'false');
+					} else {
+						storage.setItem('checked', 'true');
+					}
+				});	
+			</script>
 </body>
 
 </html>

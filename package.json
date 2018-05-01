@@ -4,12 +4,12 @@
   "description": "UOW event booking system",
   "main": "app.js",
   "directories": {
-    "test": "test"
+    "test": "src/test"
   },
   "scripts": {
     "start": "babel-watch src/app.js",
     "heroku-postbuild": "npm run build",
-    "test": "mocha",
+    "test": "mocha src/test --opts src/test/mocha.opts",
     "build": "babel src -d dist --copy-files",
     "serve": "node dist/app.js"
   },
