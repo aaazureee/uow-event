@@ -63,6 +63,7 @@ app.use((req, res, next) => {
     .then(user => {
       if (user) {
         res.locals.options.username = user.username;
+        res.locals.options.email = user.email;
         res.locals.options.type = user.userType;
         res.locals.options.history = user.history;
       }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Update
+    <%= username %>'s Profile - Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="checkout">
+
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <div class="row">
+        <div class="col-sm-10 col-md-8 col-lg-4">
+          <header class="title mt-3 mb-2">Update
+            <%= username %>'s Profile</header>
+          <form autocomplete="off" data-username="<%= username %>">
+            <div class="form-group">
+              <label for="email" class="sr-only">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<%= email %>" required>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="sr-only">New password</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="New password">
+              <small class="form-text text-muted">
+                Leave empty if password is unchanged.
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="confPassword" class="sr-only">Confirm password</label>
+              <input type="password" name="confPassword" class="form-control" id="confPassword" placeholder="Confirm password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-update">Update</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="user-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger">Update failed</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+
+      <%- include partials/html-scripts %>
+        <script src="/assets/update-profile.js"></script>
+</body>
+
+</html>

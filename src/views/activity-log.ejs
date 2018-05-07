@@ -16,14 +16,19 @@
         <div class="col-12 col-md-10 col-lg-8">
           <ul class="list-group mb-5">
             <% const reversedHistory = history.slice().reverse(); %>
-            <% for (activity of reversedHistory) { %>  
-              <li class="list-group-item" role="tab">
-                <h5><%- activity.action %></h5>
-                <small><%= activity.timeString %></small>
-              </li>
-            <% } %>
-          </div>
-        </div>   
+              <% for (activity of reversedHistory) { %>
+                <li class="list-group-item" role="tab">
+                  <h5>
+                    <%- activity.action %>
+                  </h5>
+                  <small>
+                    <%= activity.timeString %>
+                  </small>
+                </li>
+                <% } %>
+          </ul>
+        </div>
+      </div>
     </main>
 
     <!-- Sticky Footer -->

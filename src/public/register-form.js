@@ -5,8 +5,8 @@ pw.onchange = () => checkPw();
 confPw.onchange = () => checkPw();
 
 function checkPw() {
-  const pwValue = $('#password').val();
-  const confPwValue = $('#confPassword').val();
+  const pwValue = pw.value;
+  const confPwValue = confPw.value;
   if (pwValue !== confPwValue) {
     confPw.setCustomValidity('Password does not match.');
   } else {

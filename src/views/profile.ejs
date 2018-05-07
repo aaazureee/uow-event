@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    <%= username %>'s Profile - Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="booked">
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <div class="card-flex mt-3">
+        <header class="title mb-0">Account Details</header>
+        <a href="/user/<%= username %>/update" class="btn btn-sm btn-secondary ml-3">Edit</a>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 profile">
+          <div class="my-2">Username:
+            <%= username %>
+          </div>
+          <div class="my-2">Email:
+            <%= email %>
+          </div>
+          <div class="my-2">
+            Account Type:
+            <%= type[0].toUpperCase() + type.slice(1) %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <%- include partials/html-scripts %>
+</body>
+
+</html>

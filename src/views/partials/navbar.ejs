@@ -62,7 +62,9 @@
                 <%= username %>
               </a>
               <% const activityLink = `/user/${username}/activity`; %>
+              <% const profileLink = `/user/${username}`; %>              
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="<%= profileLink %>">Profile</a>
                   <a class="dropdown-item" href="<%= activityLink %>">Activity Log</a>
                   <a class="dropdown-item" href="/sign-out">Sign Out</a>
                 </div>
