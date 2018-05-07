@@ -21,16 +21,24 @@ router.post('/', isSignedIn, async (req, res, next) => {
       } else {
         //process booking
         event.currentBookings += 1;
-        event.save();
+        await event.save();
         user.eventsBooked.push(event.eventId);
-        user.save();
+        user.history.push({
+          action: `Booked <a href="/event/id/${event.eventId}">${event.eventName}</a>`,
+          time: Date.now()
+        });
+        await user.save();
         res.json({ success: true });
       }
     } else if (req.body.type === 'cancel') {
       event.currentBookings -= 1;
-      event.save();
+      await event.save();
       user.eventsBooked = user.eventsBooked.filter(value => value !== event.eventId);
-      user.save();
+      user.history.push({
+        action: `Cancelled booking for <a href="/event/id/${event.eventId}">${event.eventName}</a>`,
+        time: Date.now()
+      });
+      await user.save();
       res.json({ success: true });
     }
   } catch (err) {

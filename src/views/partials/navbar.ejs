@@ -61,9 +61,11 @@
                 aria-expanded="false">
                 <%= username %>
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/sign-out">Sign Out</a>
-              </div>
+              <% const activityLink = `/user/${username}/activity`; %>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="<%= activityLink %>">Activity Log</a>
+                  <a class="dropdown-item" href="/sign-out">Sign Out</a>
+                </div>
             </li>
           </ul>
           <% } else { %>

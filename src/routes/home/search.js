@@ -1,10 +1,17 @@
 import express from 'express';
 import Event from '../../models/event';
+import User from '../../models/user';
 import { parseEvents } from '../common/eventParser';
 
 const router = express.Router();
 
 router.get('/search', async (req, res) => {
+  let findOptions = {
+    $text: { $search: req.query.q }
+  };
+  const regex = new RegExp(req.query.q, 'i');
+
+  // Filter type
   let filter_type;
 
   switch (req.query.filter_type) {
@@ -19,13 +26,8 @@ router.get('/search', async (req, res) => {
     default:
       filter_type = 'all';
   }
-
   res.locals.options.filter_type = filter_type;
 
-  let findOptions = {
-    $text: { $search: req.query.q }
-  };
-  const regex = new RegExp(req.query.q, 'i');
   const [partialSearch, fullSearch] = await Promise.all([
     Event.find({
       $or: [
@@ -47,7 +49,21 @@ router.get('/search', async (req, res) => {
   let events = parseEvents(results);
   res.locals.options.events = events;
   res.locals.options.searchString = req.query.q;
-  res.render('search', res.locals.options);
+  if (res.locals.options.username) {
+    User.findOneAndUpdate(
+      { username: res.locals.options.username },
+      {
+        $push: {
+          history: {
+            action: `Searched for <a href="/search/?q=${req.query.q}&filter_type=${filter_type}">${req.query.q}</a>`,
+            time: Date.now()
+          }
+        }
+      }
+    ).then(() => res.render('search', res.locals.options));
+  } else {
+    return res.render('search', res.locals.options);
+  }
 });
 
 export default router;

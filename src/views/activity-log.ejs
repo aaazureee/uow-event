@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Activity Log - Event Booking System</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="booked">
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <header class="title my-3">Activity Log</header>
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-8">
+          <ul class="list-group mb-5">
+            <% const reversedHistory = history.slice().reverse(); %>
+            <% for (activity of reversedHistory) { %>  
+              <li class="list-group-item" role="tab">
+                <h5><%- activity.action %></h5>
+                <small><%= activity.timeString %></small>
+              </li>
+            <% } %>
+          </div>
+        </div>   
+    </main>
+
+    <!-- Sticky Footer -->
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <%- include partials/html-scripts %>
+</body>
+
+</html>

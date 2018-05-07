@@ -15,6 +15,7 @@ import path from 'path';
 // router
 import homeRouter from './routes/home';
 import eventRouter from './routes/event';
+import userRouter from './routes/user';
 
 const app = express();
 app.use(compression());
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
       if (user) {
         res.locals.options.username = user.username;
         res.locals.options.type = user.userType;
+        res.locals.options.history = user.history;
       }
       return next();
     });
@@ -71,6 +73,7 @@ app.use((req, res, next) => {
 // app main routers
 app.use('/', homeRouter);
 app.use('/event', eventRouter);
+app.use('/user', userRouter);
 
 //page not found handler
 app.use((req, res) => {

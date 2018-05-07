@@ -23,7 +23,13 @@ const userSchema = new Schema({
     type: String,
     enum: ['student', 'staff'],
   },
-  eventsBooked: [Number]
+  eventsBooked: [Number],
+  history: [
+    {
+      action: String,
+      time: Date
+    }
+  ]
 });
 
 userSchema.pre('save', function (next) {
