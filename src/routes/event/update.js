@@ -24,10 +24,16 @@ router.get('/id/:eventID/', isStaff, (req, res) => {
   });
 });
 
-router.put('/id/:eventID/', isStaff, (req, res) => {
+router.put('/id/:eventID/', isStaff, async (req, res) => {
   let { eventName, summary, address, startDate, endDate, fullDesc, capacity, promoCode, discount, price } = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
+
+  let event = await Event.findOne({ eventId: req.params.eventID });
+
+  if (capacity < event.currentBookings) {
+    return res.json({ error: 'Updated event\'s capacity must be higher than current bookings.' });
+  }
 
   Event.findOneAndUpdate({ eventId: req.params.eventID }, {
     eventName,
@@ -54,7 +60,7 @@ router.put('/id/:eventID/', isStaff, (req, res) => {
     ).then(() => res.status(201).json({ id: event.eventId }));
   }).catch(error => {
     console.log(error);
-    res.status(500).json({ message: 'Error when creating event' });
+    res.status(500).json({ message: 'Error when updating event' });
   });
 });
 

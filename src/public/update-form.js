@@ -156,9 +156,17 @@ form.onsubmit = event => {
     url: window.location.href,
     data: JSON.stringify(updatedEvent),
     contentType: 'application/json',
-    success: eventUpdated => {
-      //redirect user to event page
-      window.location.href = `/event/id/${eventUpdated.id}`;
+    success: result => {
+      if (result.error) {
+        $('#update-modal').on('hide.bs.modal', () => {
+          $('.submit-btn').attr('disabled', false);
+        });
+        $('#update-modal .modal-body p').text(result.error);
+        $('#update-modal').modal('show');
+      } else {
+        //redirect user to event page
+        window.location.href = `/event/id/${result.id}`;
+      }
     },
     error: err => {
       console.log(err);

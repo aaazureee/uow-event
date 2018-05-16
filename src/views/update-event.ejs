@@ -63,7 +63,8 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="start-time">Start Time</label>
-                <input class="form-control" id="start-time" placeholder="Start time" data-start-time="<%= event.startDate.toString() %>" required>
+                <input class="form-control" id="start-time" placeholder="Start time" data-start-time="<%= event.startDate.toString() %>"
+                  required>
                 <div class="invalid-feedback" id="start-feedback">
                   Event start time is required.
                 </div>
@@ -100,7 +101,7 @@
               </div>
               <div class="form-group col-lg-5">
                 <label for="capacity">Capacity</label>
-                <input readonly type="number" class="form-control" id="capacity" min="0" placeholder="Number of seats" value="<%= event.capacity %>"
+                <input type="number" class="form-control" id="capacity" min="1" placeholder="Number of seats" value="<%= event.capacity %>"
                   required>
                 <div class="invalid-feedback">
                   Please enter a valid number.
@@ -135,6 +136,26 @@
             <button class="btn btn-primary submit-btn" type="submit">Submit</button>
             <button class="btn btn-secondary reset" type="button">Reset</button>
           </form>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="update-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger">Update failed</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
