@@ -20,7 +20,6 @@ import userRouter from './routes/user';
 const app = express();
 app.use(compression());
 app.use(minify({
-  cache: __dirname + '/cache',
   uglifyJsModule: uglifyEs
 }));
 

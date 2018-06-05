@@ -10,7 +10,7 @@
     "start": "babel-watch src/app.js",
     "heroku-postbuild": "npm run build",
     "test": "mocha src/test --opts src/test/mocha.opts",
-    "build": "babel src -d dist --copy-files && npm run remove-cache",
+    "build": "babel src -d dist --copy-files --no-comments && npm run remove-cache",
     "serve": "node dist/app.js",
 		"remove-cache": "rm -rf dist/cache/* && touch dist/cache/cache.txt"
   },
