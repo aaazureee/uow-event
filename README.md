@@ -4,3 +4,5 @@ A web application that simulates an event booking system for my university, usin
 price, dates/sessions, promotional codes, capacities, etc. on an existing event.  
 - Event booking: System users can view the list of events, make a booking, and modify or cancel an existing booking.  
 - User management: System users can view their profile and activity log (history). Users can also update their personal details such as email and password.
+
+**Register for a staff account to access all features above.**
