@@ -21,10 +21,10 @@ const app = express();
 app.use(compression());
 app.use(minify({
   uglifyJsModule: uglifyEs
-}));
 
+}));
 // connect to database 
-mongoose.connect(process.env.DB_URI);
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('open', () => console.log('Connection to database established'));

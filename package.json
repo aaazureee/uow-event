@@ -12,7 +12,7 @@
     "test": "mocha src/test --opts src/test/mocha.opts",
     "build": "babel src -d dist --copy-files --no-comments && npm run remove-cache",
     "serve": "node dist/app.js",
-		"remove-cache": "rm -rf dist/cache/* && touch dist/cache/cache.txt"
+    "remove-cache": "rm -rf dist/cache/* && touch dist/cache/cache.txt"
   },
   "babel": {
     "presets": [
@@ -47,7 +47,7 @@
     "express-minify": "^1.0.0",
     "express-session": "^1.15.6",
     "moment": "^2.22.0",
-    "mongoose": "^5.0.12",
+    "mongoose": "^5.6.0",
     "uglify-es": "^3.3.9"
   },
   "devDependencies": {
@@ -57,9 +57,9 @@
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
     "mocha": "^5.0.5"
-  }, 
-	"engines": {
-		"npm": "6.0.0",
-		"node": "8.9.4"
-	}
+  },
+  "engines": {
+    "npm": "6.0.0",
+    "node": "8.9.4"
+  }
 }
