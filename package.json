@@ -42,7 +42,7 @@
     "connect-mongo": "^2.0.1",
     "dotenv": "^5.0.1",
     "ejs": "^2.5.8",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-http-to-https": "^1.1.4",
     "express-minify": "^1.0.0",
     "express-session": "^1.15.6",
